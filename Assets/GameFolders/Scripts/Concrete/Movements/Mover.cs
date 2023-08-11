@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
