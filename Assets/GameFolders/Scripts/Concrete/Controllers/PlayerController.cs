@@ -9,13 +9,13 @@ namespace Unity_RPGProject.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] Transform _targetTrasform;
+        [Header("Movement")]
+        [SerializeField] float _speed;
 
 
         NavMeshAgent _navMeshAgent;
         IMover _mover;
 
-        public Transform TargetTransform => _targetTrasform;
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
 
 
@@ -25,11 +25,16 @@ namespace Unity_RPGProject.Controllers
             _mover = new Mover(this);
         }
 
-        private void FixedUpdate()
+        private void Start()
+        {
+            _navMeshAgent.speed = _speed;
+        }
+
+
+        private void LateUpdate()
         {
             _mover.Move();
         }
-
 
 
 

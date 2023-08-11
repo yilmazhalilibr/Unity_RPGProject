@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Movements;
@@ -9,6 +10,7 @@ namespace Unity_RPGProject.Movements
     public class Mover : IMover
     {
         PlayerController _playerController;
+        Ray _lastRay;
 
         public Mover(PlayerController playerController)
         {
@@ -17,14 +19,26 @@ namespace Unity_RPGProject.Movements
 
         public void Move()
         {
-            _playerController.NavMeshAgent.destination = _playerController.TargetTransform.position;
+            if (Input.GetMouseButtonDown(0))
+            {
+                MoveToCursor();
+            }
 
         }
 
+        private void MoveToCursor()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
+            bool hasHit = Physics.Raycast(ray,out hit);
 
+            if (hasHit) 
+            {
+                _playerController.NavMeshAgent.destination = hit.point;
+            }
 
-
+        }
 
     }
 }
