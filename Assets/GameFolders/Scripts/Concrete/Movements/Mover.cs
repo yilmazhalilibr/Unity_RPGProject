@@ -15,7 +15,7 @@ namespace Unity_RPGProject.Movements
 
         public void Move()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
                 MoveToCursor();
             }
