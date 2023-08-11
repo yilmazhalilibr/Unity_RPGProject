@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity_RPGProject.Abstracts.Movements
+namespace Unity_RPGProject.Abstracts.Combats
 {
-    public interface IMover
+    public interface IAttack
     {
-        bool Move();
+        bool Attack();
     }
 }
 

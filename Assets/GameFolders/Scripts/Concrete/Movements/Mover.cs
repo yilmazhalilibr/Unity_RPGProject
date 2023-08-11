@@ -13,26 +13,22 @@ namespace Unity_RPGProject.Movements
             _playerController = playerController;
         }
 
-        public void Move()
-        {
-            if (Input.GetMouseButton(0))
-            {
-                MoveToCursor();
-            }
-
-        }
-
-        private void MoveToCursor()
+        public bool Move()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            bool hasHit = Physics.Raycast(ray,out hit);
+            bool hasHit = Physics.Raycast(ray, out hit);
 
-            if (hasHit) 
+            if (hasHit)
             {
-                _playerController.NavMeshAgent.destination = hit.point;
+                if (Input.GetMouseButton(0))
+                {
+                    _playerController.NavMeshAgent.destination = hit.point;
+                }
+                return true;
             }
+            return false;
 
         }
 
