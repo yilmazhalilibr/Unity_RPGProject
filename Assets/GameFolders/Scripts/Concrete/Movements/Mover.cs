@@ -10,7 +10,6 @@ namespace Unity_RPGProject.Movements
     public class Mover : IMover
     {
         PlayerController _playerController;
-        Ray _lastRay;
 
         public Mover(PlayerController playerController)
         {
