@@ -22,7 +22,7 @@ namespace Unity_RPGProject.Combats
 
         public bool Attack()
         {
-            RaycastHit[] hits = Physics.RaycastAll(RaycastExtension.GetMouseByRaycast()); 
+            RaycastHit[] hits = Physics.RaycastAll(RaycastExtension.GetMouseByRaycast());
             foreach (RaycastHit hit in hits)
             {
                 IHealth health = hit.transform.GetComponent<Health>();
@@ -44,7 +44,7 @@ namespace Unity_RPGProject.Combats
         }
         public void StopAttack()
         {
-            //Character Attack Anim cancel
+            //Character Attack  cancel
         }
 
         private bool GetDistanceEnemy(RaycastHit hit)
