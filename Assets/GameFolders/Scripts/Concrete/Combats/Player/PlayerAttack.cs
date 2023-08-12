@@ -11,12 +11,9 @@ namespace Unity_RPGProject.Combats
     {
         PlayerController _playerController;
 
-        private float _weaponRange = 2f;
-
-        public float WeaponRange => _weaponRange;
-
         public WeaponSO Weapon => _playerController.Weapon;
 
+        public event System.Action OnAttack;
         public PlayerAttack(PlayerController playerController)
         {
             _playerController = playerController;
@@ -32,6 +29,7 @@ namespace Unity_RPGProject.Combats
                 if (Input.GetMouseButton(0))
                 {
                     health.TakeDamage(Weapon.WeaponDamage);
+                    OnAttack?.Invoke();
                     return true;
                 }
             }

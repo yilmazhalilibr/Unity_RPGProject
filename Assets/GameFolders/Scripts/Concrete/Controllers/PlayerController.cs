@@ -25,15 +25,22 @@ namespace Unity_RPGProject.Controllers
 
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
         public WeaponSO Weapon => _weaponSO;
-
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
 
-            _mover = new Mover(this);
             _playerAnimator = new PlayerAnimationWithNavMesh(this);
             _attack = new PlayerAttack(this);
+            _mover = new Mover(this);
 
+        }
+        private void OnEnable()
+        {
+            _attack.OnAttack += AttackMovement;
+        }
+        private void OnDisable()
+        {
+            _attack.OnAttack -= AttackMovement;
         }
 
         private void Start()
@@ -43,8 +50,8 @@ namespace Unity_RPGProject.Controllers
 
         private void FixedUpdate()
         {
-            if (_mover.Move()) return;
             if (_attack.Attack()) return;
+            if (_mover.Move()) return;
 
         }
 
@@ -53,6 +60,10 @@ namespace Unity_RPGProject.Controllers
             _playerAnimator.AnimationUpdate();
         }
 
+        private void AttackMovement()
+        {
+            _mover.Move();
+        }
 
 
     }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponPrefab: {fileID: 0}
   _weaponDamage: 1
-  _weaponRange: 3
+  _weaponRange: 2

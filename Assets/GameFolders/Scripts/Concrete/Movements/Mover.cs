@@ -8,6 +8,7 @@ namespace Unity_RPGProject.Movements
     public class Mover : IMover
     {
         PlayerController _playerController;
+        
         public Mover(PlayerController playerController)
         {
             _playerController = playerController;
