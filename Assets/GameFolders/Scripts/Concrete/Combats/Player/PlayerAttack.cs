@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Controllers;
 using Unity_RPGProject.ScriptableObjects;
+using Unity_RPGProject.Utilities.Raycast;
 using UnityEngine;
 
 namespace Unity_RPGProject.Combats
@@ -21,22 +22,35 @@ namespace Unity_RPGProject.Combats
 
         public bool Attack()
         {
-            RaycastHit[] hits = Physics.RaycastAll(Camera.main.ScreenPointToRay(Input.mousePosition));
+            RaycastHit[] hits = Physics.RaycastAll(RaycastExtension.GetMouseByRaycast()); 
             foreach (RaycastHit hit in hits)
             {
                 IHealth health = hit.transform.GetComponent<Health>();
                 if (health == null) continue;
+
                 if (Input.GetMouseButton(0))
                 {
-                    health.TakeDamage(Weapon.WeaponDamage);
-                    OnAttack?.Invoke();
-                    return true;
+                    if (GetDistanceEnemy(hit))
+                    {
+                        health.TakeDamage(Weapon.WeaponDamage);
+                        OnAttack?.Invoke();
+                        return true;
+                    }
+
                 }
             }
             return false;
 
         }
+        public void StopAttack()
+        {
+            //Character Attack Anim cancel
+        }
 
+        private bool GetDistanceEnemy(RaycastHit hit)
+        {
+            return Vector3.Distance(hit.transform.position, _playerController.transform.position) <= Weapon.WeaponRange;
+        }
 
     }
 }

@@ -1,6 +1,7 @@
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Combats;
 using Unity_RPGProject.Controllers;
+using Unity_RPGProject.Utilities.Raycast;
 using UnityEngine;
 
 namespace Unity_RPGProject.Movements
@@ -16,7 +17,7 @@ namespace Unity_RPGProject.Movements
 
         public bool Move()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = RaycastExtension.GetMouseByRaycast();
             RaycastHit hit;
 
             bool hasHit = Physics.Raycast(ray, out hit);
