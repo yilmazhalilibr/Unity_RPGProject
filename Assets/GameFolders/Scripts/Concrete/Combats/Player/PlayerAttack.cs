@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Controllers;
+using Unity_RPGProject.ScriptableObjects;
 using UnityEngine;
 
 namespace Unity_RPGProject.Combats
@@ -9,6 +10,12 @@ namespace Unity_RPGProject.Combats
     public class PlayerAttack : IAttack
     {
         PlayerController _playerController;
+
+        private float _weaponRange = 2f;
+
+        public float WeaponRange => _weaponRange;
+
+        public WeaponSO Weapon => _playerController.Weapon;
 
         public PlayerAttack(PlayerController playerController)
         {
@@ -24,13 +31,15 @@ namespace Unity_RPGProject.Combats
                 if (health == null) continue;
                 if (Input.GetMouseButton(0))
                 {
-                    health.TakeDamage(_playerController.Damage);
+                    health.TakeDamage(Weapon.WeaponDamage);
                     return true;
                 }
             }
             return false;
 
         }
+
+
     }
 }
 

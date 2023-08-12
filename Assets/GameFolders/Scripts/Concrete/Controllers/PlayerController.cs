@@ -4,6 +4,7 @@ using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Animations;
 using Unity_RPGProject.Combats;
 using Unity_RPGProject.Movements;
+using Unity_RPGProject.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,8 @@ namespace Unity_RPGProject.Controllers
     {
         [Header("Movement")]
         [SerializeField] float _speed;
-        [SerializeField] float _damage;
+        [Header("Combat")]
+        [SerializeField] WeaponSO _weaponSO;
 
 
         NavMeshAgent _navMeshAgent;
@@ -22,7 +24,7 @@ namespace Unity_RPGProject.Controllers
         IAttack _attack;
 
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
-        public float Damage => _damage;
+        public WeaponSO Weapon => _weaponSO;
 
         private void Awake()
         {
@@ -31,6 +33,7 @@ namespace Unity_RPGProject.Controllers
             _mover = new Mover(this);
             _playerAnimator = new PlayerAnimationWithNavMesh(this);
             _attack = new PlayerAttack(this);
+
         }
 
         private void Start()
@@ -40,8 +43,9 @@ namespace Unity_RPGProject.Controllers
 
         private void FixedUpdate()
         {
-            if (_attack.Attack()) return;
             if (_mover.Move()) return;
+            if (_attack.Attack()) return;
+
         }
 
         private void LateUpdate()

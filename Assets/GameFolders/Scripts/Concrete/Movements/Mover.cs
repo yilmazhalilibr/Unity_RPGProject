@@ -1,4 +1,5 @@
 using Unity_RPGProject.Abstracts.Movements;
+using Unity_RPGProject.Combats;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
 
@@ -7,7 +8,6 @@ namespace Unity_RPGProject.Movements
     public class Mover : IMover
     {
         PlayerController _playerController;
-
         public Mover(PlayerController playerController)
         {
             _playerController = playerController;
@@ -24,6 +24,7 @@ namespace Unity_RPGProject.Movements
             {
                 if (Input.GetMouseButton(0))
                 {
+                    _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;
                     _playerController.NavMeshAgent.destination = hit.point;
                 }
                 return true;
@@ -31,6 +32,8 @@ namespace Unity_RPGProject.Movements
             return false;
 
         }
+
+
 
     }
 }
