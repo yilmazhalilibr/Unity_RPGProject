@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.States;
 using UnityEngine;
 
-
 namespace Unity_RPGProject.States.PlayerStates
 {
-    public class DeadState : IState
+    public class IdleState : IState
     {
         public void FixedTick()
         {
