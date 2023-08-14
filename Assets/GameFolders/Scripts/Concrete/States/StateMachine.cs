@@ -34,6 +34,16 @@ namespace Unity_RPGProject.States
             _currentState.Tick();
         }
 
+        public void FixedTick()
+        {
+            _currentState.FixedTick();
+        }
+
+        public void LateTick()
+        {
+            _currentState.LateTick();
+        }
+
         private StateTransformer CheckForTransformer()
         {
             foreach (StateTransformer stateTransformer in _anyTransformer)
