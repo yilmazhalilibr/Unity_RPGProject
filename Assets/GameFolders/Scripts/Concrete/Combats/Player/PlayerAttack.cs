@@ -20,12 +20,12 @@ namespace Unity_RPGProject.Combats
             _playerController = playerController;
         }
 
-        public bool Attack()
+        public bool AttackRaycastMouse()
         {
             RaycastHit[] hits = Physics.RaycastAll(RaycastExtension.GetMouseByRaycast());
             foreach (RaycastHit hit in hits)
             {
-                IHealth health = hit.transform.GetComponent<Health>();
+                IHealth health = hit.transform.GetComponent<IHealth>();
                 if (health == null) continue;
 
                 if (_playerController.Input.OnMouseLeftClick)
@@ -48,6 +48,18 @@ namespace Unity_RPGProject.Combats
             return Vector3.Distance(hit.transform.position, _playerController.transform.position) <= Weapon.WeaponRange;
         }
 
+        public void Attack()
+        {
+            var handCollider = _playerController.GetComponentInChildren<SphereCollider>();
+            handCollider.enabled = true;
+
+            if (handCollider)
+            {
+                //this are is contunie.
+            }
+
+
+        }
     }
 }
 

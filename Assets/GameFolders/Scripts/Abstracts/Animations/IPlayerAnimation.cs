@@ -6,7 +6,10 @@ namespace Unity_RPGProject.Abstracts.Animations
 {
     public interface IPlayerAnimation
     {
-        void AnimationUpdate();
+        void PlayerMoveAnim();
+        void PlayerAttackAnimAsync();
+        void PlayerAttackAnimStop();
+
     }
 
 }

@@ -21,7 +21,7 @@ namespace Unity_RPGProject.States.PlayerStates
         public void LateTick()
         {
             Debug.Log("IdleTick Enable");
-            _playerController.PlayerAnimation.AnimationUpdate();
+            _playerController.PlayerAnimation.PlayerMoveAnim();
 
         }
 
@@ -40,7 +40,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
-            _playerController.Mover.Move();
 
         }
     }

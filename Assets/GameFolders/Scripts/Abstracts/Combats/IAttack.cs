@@ -9,7 +9,7 @@ namespace Unity_RPGProject.Abstracts.Combats
     {
         event System.Action OnAttack;
         WeaponSO Weapon { get; }
-        bool Attack();
+        bool AttackRaycastMouse();
     }
 }
 

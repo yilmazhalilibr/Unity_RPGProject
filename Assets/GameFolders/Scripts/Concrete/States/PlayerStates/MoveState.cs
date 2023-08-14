@@ -19,12 +19,12 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void FixedTick()
         {
-
+            _playerController.Mover.Move();
         }
 
         public void LateTick()
         {
-            _playerController.PlayerAnimation.AnimationUpdate();
+            _playerController.PlayerAnimation.PlayerMoveAnim();
             Debug.Log("MoveTick Enable");
         }
 
@@ -44,7 +44,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
-            _playerController.Mover.Move();
         }
 
 
