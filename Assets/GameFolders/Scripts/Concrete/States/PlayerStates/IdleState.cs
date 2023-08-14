@@ -20,8 +20,8 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void LateTick()
         {
-            _playerController.PlayerAnimation.AnimationUpdate();
             Debug.Log("IdleTick Enable");
+            _playerController.PlayerAnimation.AnimationUpdate();
 
         }
 

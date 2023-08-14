@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 435482}
   - component: {fileID: 9505156}
   m_Layer: 0
-  m_Name: Character_Knights_Soldier_02
+  m_Name: MainSoldierBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,24 +21,28 @@ namespace Unity_RPGProject.Controllers
         [SerializeField] float _speed;
         [Header("Combat")]
         [SerializeField] WeaponSO _weaponSO;
-        [SerializeField] IHealth _health;
 
 
         NavMeshAgent _navMeshAgent;
         StateMachine _stateMachine;
+
         IInputReader _input;
         IPlayerAnimation _playerAnimator;
         IMover _mover;
         IAttack _attack;
+        IHealth _health;
 
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
         public WeaponSO Weapon => _weaponSO;
 
         public IMover Mover => _mover;
-
-        public bool CanAttack => _weaponSO.WeaponRange >= _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
-        public bool CanMove => _navMeshAgent.velocity != Vector3.zero;
         public IPlayerAnimation PlayerAnimation => _playerAnimator;
+        public IInputReader Input => _input;
+
+        public bool CanMove => _navMeshAgent.velocity != Vector3.zero;
+        public bool CanAttack => _weaponSO.WeaponRange >= _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
+
+
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -71,8 +75,8 @@ namespace Unity_RPGProject.Controllers
 
             _stateMachine.AddState(idleState, moveState, () => CanMove);
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
-            _stateMachine.AddState(idleState, attackState, () => CanAttack);
-            _stateMachine.AddState(attackState, moveState, () => !CanAttack);
+            //_stateMachine.AddState(idleState, attackState, () => CanAttack);
+            //_stateMachine.AddState(attackState, moveState, () => !CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
 

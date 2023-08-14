@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Inputs;
-using Unity_RPGProject.Concrete.Inputs;
 using Unity_RPGProject.Controllers;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Unity_RPGProject.Inputs

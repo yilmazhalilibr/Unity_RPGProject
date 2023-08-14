@@ -28,7 +28,7 @@ namespace Unity_RPGProject.Combats
                 IHealth health = hit.transform.GetComponent<Health>();
                 if (health == null) continue;
 
-                if (Input.GetMouseButton(0))
+                if (_playerController.Input.OnMouseLeftClick)
                 {
                     if (GetDistanceEnemy(hit))
                     {
