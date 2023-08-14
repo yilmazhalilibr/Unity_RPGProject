@@ -1,8 +1,11 @@
 using Unity_RPGProject.Abstracts.Animations;
 using Unity_RPGProject.Abstracts.Combats;
+using Unity_RPGProject.Abstracts.Inputs;
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Animations;
 using Unity_RPGProject.Combats;
+using Unity_RPGProject.Concrete.Inputs;
+using Unity_RPGProject.Inputs;
 using Unity_RPGProject.Movements;
 using Unity_RPGProject.ScriptableObjects;
 using Unity_RPGProject.States;
@@ -23,6 +26,7 @@ namespace Unity_RPGProject.Controllers
 
         NavMeshAgent _navMeshAgent;
         StateMachine _stateMachine;
+        IInputReader _input;
         IPlayerAnimation _playerAnimator;
         IMover _mover;
         IAttack _attack;
@@ -40,6 +44,7 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
+            _input = new InputReader(this);
             _playerAnimator = new PlayerAnimationWithNavMesh(this);
             _stateMachine = new StateMachine();
             _attack = new PlayerAttack(this);
@@ -66,9 +71,8 @@ namespace Unity_RPGProject.Controllers
 
             _stateMachine.AddState(idleState, moveState, () => CanMove);
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
-
-            // _stateMachine.AddState(idleState, attackState, () => CanAttack);
-            //  _stateMachine.AddState(attackState, moveState, () => !CanAttack);
+            _stateMachine.AddState(idleState, attackState, () => CanAttack);
+            _stateMachine.AddState(attackState, moveState, () => !CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
 
@@ -78,6 +82,7 @@ namespace Unity_RPGProject.Controllers
         private void Update()
         {
             _stateMachine.Tick();
+            Debug.Log(_input.OnMouseLeftClick);
         }
 
         private void FixedUpdate()

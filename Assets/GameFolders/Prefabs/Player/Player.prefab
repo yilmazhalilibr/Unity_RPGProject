@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5102571849656819306}
   - component: {fileID: 6543363390244643710}
   - component: {fileID: 7373853601205111696}
+  - component: {fileID: 9203116148354456662}
+  - component: {fileID: 1328041495112951786}
   - component: {fileID: 2484319999065306489}
   - component: {fileID: 7278835248825993994}
   m_Layer: 0
@@ -72,6 +74,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 7
   _weaponSO: {fileID: 11400000, guid: e22e84e6518e44f4dbe3ebeb601d43c3, type: 2}
+--- !u!114 &9203116148354456662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448081928087938033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31825c3de896b2049aaae8edeb3785f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthInfo: {fileID: 11400000, guid: 874e11121db5deb4988c9a16274e6f42, type: 2}
+--- !u!114 &1328041495112951786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3448081928087938033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7d8f5c15f85b7d847a9a4e1604ce9144, type: 3}
+  m_NotificationBehavior: 3
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!195 &2484319999065306489
 NavMeshAgent:
   m_ObjectHideFlags: 0
