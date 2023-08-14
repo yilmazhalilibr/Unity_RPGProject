@@ -13,14 +13,12 @@ namespace Unity_RPGProject.States.PlayerStates
     public class MoveState : IState
     {
         PlayerController _playerController;
-        IMover _mover;
 
         Vector3 _localVelocity;
 
         public MoveState(PlayerController playerController)
         {
             _playerController = playerController;
-            _mover = new Mover(_playerController);
 
         }
 
@@ -55,10 +53,10 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
-            _mover.Move();
+            _playerController.Mover.Move();
         }
 
-        
+
 
     }
 }

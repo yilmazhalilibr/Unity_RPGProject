@@ -30,8 +30,10 @@ namespace Unity_RPGProject.Controllers
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
         public WeaponSO Weapon => _weaponSO;
 
+        public IMover Mover => _mover;
+
         public bool CanAttack => _weaponSO.WeaponRange >= _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
-        public bool CanMove => Mathf.Abs(_navMeshAgent.velocity.x) >= 0.1f;
+        public bool CanMove => _mover.Move();
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -61,8 +63,8 @@ namespace Unity_RPGProject.Controllers
             MoveState moveState = new MoveState(this);
             DeadState deadState = new DeadState();
 
-            _stateMachine.AddState(idleState, moveState, () => CanMove);
-            _stateMachine.AddState(moveState, idleState, () => !CanMove);
+            _stateMachine.AddState(idleState, moveState, () => _mover.Move());
+            _stateMachine.AddState(moveState, idleState, () => !_mover.Move());
             _stateMachine.AddState(idleState, attackState, () => CanAttack);
             _stateMachine.AddState(attackState, moveState, () => !CanAttack);
 

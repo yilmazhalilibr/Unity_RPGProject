@@ -12,11 +12,9 @@ namespace Unity_RPGProject.States.PlayerStates
     public class IdleState : IState
     {
         PlayerController _playerController;
-        IMover _mover;
         public IdleState(PlayerController playerController)
         {
             _playerController = playerController;
-            _mover = new Mover(_playerController);
 
         }
 
@@ -47,7 +45,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
-            _mover.Move();
+            _playerController.Mover.Move();
 
         }
     }
