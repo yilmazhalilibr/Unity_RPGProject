@@ -14,7 +14,6 @@ namespace Unity_RPGProject.Combats
 
         public WeaponSO Weapon => _playerController.Weapon;
 
-        public event System.Action OnAttack;
         public PlayerAttack(PlayerController playerController)
         {
             _playerController = playerController;
@@ -33,7 +32,6 @@ namespace Unity_RPGProject.Combats
                     if (GetDistanceEnemy(hit))
                     {
                         health.TakeDamage(Weapon.WeaponDamage);
-                        OnAttack?.Invoke();
                         return true;
                     }
 
@@ -48,18 +46,7 @@ namespace Unity_RPGProject.Combats
             return Vector3.Distance(hit.transform.position, _playerController.transform.position) <= Weapon.WeaponRange;
         }
 
-        public void Attack()
-        {
-            var handCollider = _playerController.GetComponentInChildren<SphereCollider>();
-            handCollider.enabled = true;
 
-            if (handCollider)
-            {
-                //this are is contunie.
-            }
-
-
-        }
     }
 }
 

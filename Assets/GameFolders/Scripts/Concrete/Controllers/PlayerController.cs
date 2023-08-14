@@ -38,8 +38,8 @@ namespace Unity_RPGProject.Controllers
         public IPlayerAnimation PlayerAnimation => _playerAnimator;
         public IInputReader Input => _input;
 
-        private bool CanMove => _navMeshAgent.velocity != Vector3.zero;
-        private bool CanAttack => _weaponSO.WeaponRange >= 1 && _navMeshAgent.velocity == Vector3.zero;
+        private bool CanMove => _navMeshAgent.velocity != Vector3.zero || Input.OnMouseLeftClick;
+        private bool CanAttack => _weaponSO.WeaponRange >= 1 && _navMeshAgent.velocity == Vector3.zero && !Input.OnMouseLeftClick;
 
 
         private void Awake()
@@ -59,15 +59,15 @@ namespace Unity_RPGProject.Controllers
         {
             _navMeshAgent.speed = _speed;
 
-            IdleState idleState = new IdleState(this);
-            MoveState moveState = new MoveState(this);
-            AttackState attackState = new AttackState(this);
-            DeadState deadState = new DeadState();
+            IdleState idleState = new(this);
+            MoveState moveState = new(this);
+            AttackState attackState = new(this);
+            DeadState deadState = new();
 
             _stateMachine.AddState(idleState, moveState, () => CanMove);
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
-            _stateMachine.AddState(idleState, attackState, () => CanAttack);
-            _stateMachine.AddState(attackState, moveState, () => !CanAttack);
+            //_stateMachine.AddState(idleState, attackState, () => CanAttack);
+            //_stateMachine.AddState(attackState, idleState, () => !CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
 
@@ -77,12 +77,12 @@ namespace Unity_RPGProject.Controllers
         private void Update()
         {
             _stateMachine.Tick();
-            _mover.Move();
         }
 
         private void FixedUpdate()
         {
             _stateMachine.FixedTick();
+            Debug.Log(Input.OnMouseLeftClick);
         }
 
         private void LateUpdate()
@@ -90,7 +90,10 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.LateTick();
         }
 
-
+        public void Hit()
+        {
+            Debug.Log("ATTACK IS SUCCEDD");
+        }
 
     }
 }

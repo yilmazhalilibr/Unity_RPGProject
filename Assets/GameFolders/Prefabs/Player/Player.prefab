@@ -128,7 +128,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 12
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 1000
   m_StoppingDistance: 1
@@ -253,10 +253,39 @@ PrefabInstance:
     - {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 188290, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1602772464208214017}
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
 --- !u!4 &4853938251177862846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 435482, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_PrefabInstance: {fileID: 4853938251178017700}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4853938251178138662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 188290, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 4853938251178017700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1602772464208214017
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853938251178138662}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.2
+  m_Center: {x: -0.1, y: 0, z: 0}

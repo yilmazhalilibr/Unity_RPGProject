@@ -18,6 +18,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void OnEnter()
         {
+            _playerController.PlayerAnimation.PlayerAttackAnimAsync();
         }
 
         public void OnExit()
@@ -37,7 +38,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void LateTick()
         {
-            _playerController.PlayerAnimation.PlayerAttackAnimAsync();
         }
 
 

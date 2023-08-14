@@ -138,32 +138,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4391376828027782934, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
   m_PrefabInstance: {fileID: 8019020758215124905}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1724981689 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4853938251178138662, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
-  m_PrefabInstance: {fileID: 8173779732268342854}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1724981691
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724981689}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: -0.1, y: 0, z: 0}
 --- !u!20 &1983121664 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5056652496780388184, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
@@ -440,6 +414,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1983121664}
+    - target: {fileID: 2484319999065306489, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
+      propertyPath: m_Acceleration
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484319999065306489, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3448081928087938033, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_Name
       value: Player
@@ -491,8 +473,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4853938251178138662, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1724981691}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}

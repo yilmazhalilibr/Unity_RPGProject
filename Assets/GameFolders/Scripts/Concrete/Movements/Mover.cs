@@ -1,3 +1,4 @@
+using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Combats;
 using Unity_RPGProject.Controllers;
@@ -24,9 +25,15 @@ namespace Unity_RPGProject.Movements
 
             if (hasHit)
             {
-                if (_playerController.Input.OnMouseLeftClick)
+                if (!_playerController.Input.OnMouseLeftClick) return false;
+                if (hit.collider.TryGetComponent(out IHealth health)) // This component need will be next time to change with EnemyController.
                 {
                     _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;
+                    _playerController.NavMeshAgent.destination = hit.point;
+
+                }
+                else
+                {
                     _playerController.NavMeshAgent.destination = hit.point;
                 }
                 return true;

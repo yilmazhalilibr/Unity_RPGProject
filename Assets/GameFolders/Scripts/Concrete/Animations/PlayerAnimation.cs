@@ -37,7 +37,7 @@ namespace Unity_RPGProject.Animations
         public async void PlayerAttackAnimAsync()
         {
             _animator.SetBool(ATTACK, true);
-            await Task.Delay((int)_animator.GetCurrentAnimatorStateInfo(0).length);
+            await Task.Delay((int)_animator.GetCurrentAnimatorStateInfo(0).length * 10);
 
         }
 
