@@ -33,7 +33,8 @@ namespace Unity_RPGProject.Controllers
         public IMover Mover => _mover;
 
         public bool CanAttack => _weaponSO.WeaponRange >= _navMeshAgent.stoppingDistance && _navMeshAgent.velocity == Vector3.zero;
-        public bool CanMove => _mover.Move();
+        public bool CanMove => _navMeshAgent.velocity != Vector3.zero;
+        public IPlayerAnimation PlayerAnimation => _playerAnimator;
         private void Awake()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -59,14 +60,15 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent.speed = _speed;
 
             IdleState idleState = new IdleState(this);
-            AttackState attackState = new AttackState();
             MoveState moveState = new MoveState(this);
+            AttackState attackState = new AttackState();
             DeadState deadState = new DeadState();
 
-            _stateMachine.AddState(idleState, moveState, () => _mover.Move());
-            _stateMachine.AddState(moveState, idleState, () => !_mover.Move());
-            _stateMachine.AddState(idleState, attackState, () => CanAttack);
-            _stateMachine.AddState(attackState, moveState, () => !CanAttack);
+            _stateMachine.AddState(idleState, moveState, () => CanMove);
+            _stateMachine.AddState(moveState, idleState, () => !CanMove);
+
+            // _stateMachine.AddState(idleState, attackState, () => CanAttack);
+            //  _stateMachine.AddState(attackState, moveState, () => !CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
 
@@ -84,7 +86,6 @@ namespace Unity_RPGProject.Controllers
             //if (_mover.Move()) return;
 
             _stateMachine.FixedTick();
-
 
         }
 

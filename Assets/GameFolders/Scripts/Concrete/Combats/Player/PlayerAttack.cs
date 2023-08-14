@@ -42,10 +42,6 @@ namespace Unity_RPGProject.Combats
             return false;
 
         }
-        public void StopAttack()
-        {
-            //Character Attack  cancel
-        }
 
         private bool GetDistanceEnemy(RaycastHit hit)
         {

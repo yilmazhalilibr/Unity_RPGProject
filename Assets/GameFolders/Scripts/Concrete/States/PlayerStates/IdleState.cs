@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity_RPGProject.Abstracts.Animations;
-using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Abstracts.States;
 using Unity_RPGProject.Controllers;
-using Unity_RPGProject.Movements;
 using UnityEngine;
 
 namespace Unity_RPGProject.States.PlayerStates
@@ -12,6 +7,7 @@ namespace Unity_RPGProject.States.PlayerStates
     public class IdleState : IState
     {
         PlayerController _playerController;
+
         public IdleState(PlayerController playerController)
         {
             _playerController = playerController;
@@ -24,22 +20,21 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void LateTick()
         {
-            Animation();
-        }
+            _playerController.PlayerAnimation.AnimationUpdate();
+            Debug.Log("IdleTick Enable");
 
-        private void Animation()
-        {
-            _playerController.GetComponent<Animator>().SetFloat("forwardSpeed", 0);
         }
 
         public void OnEnter()
         {
-            Debug.Log("OnEnter IdleState");
+            //Debug.Log($"{nameof(IdleState)} {nameof(OnEnter)}");
+
         }
 
         public void OnExit()
         {
-            Debug.Log("OnExit IdleState");
+            //Debug.Log($"{nameof(IdleState)} {nameof(OnExit)}");
+
 
         }
 
