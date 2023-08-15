@@ -41,7 +41,7 @@ namespace Unity_RPGProject.Controllers
         public IInputReader Input => _input;
 
         private bool CanMove => _navMeshAgent.velocity != Vector3.zero || Input.OnMouseLeftClick;
-        private bool CanAttack => _navMeshAgent.velocity == Vector3.zero && Input.OnMouseLeftClick && _weaponSO.WeaponRange >= Vector3.Distance(transform.position, Input.LastHitMouse.collider.transform.position) && _targetDetector.CurrentTarget == Enums.Targets.Enemy;
+        private bool CanAttack => _navMeshAgent.velocity == Vector3.zero && _targetDetector.CurrentTarget == Enums.Targets.Enemy && Input.OnMouseLeftClick;
 
 
         private void Awake()
@@ -65,7 +65,7 @@ namespace Unity_RPGProject.Controllers
             IdleState idleState = new(this);
             MoveState moveState = new(this);
             AttackState attackState = new(this);
-            DeadState deadState = new();
+            DeadState deadState = new(this);
 
             _stateMachine.AddState(idleState, moveState, () => CanMove);
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
@@ -80,24 +80,22 @@ namespace Unity_RPGProject.Controllers
         private void Update()
         {
             _stateMachine.Tick();
-            Debug.Log(NavMeshAgent.velocity);
+            Debug.Log(CanAttack + "Attack");
         }
 
         private void FixedUpdate()
         {
             _stateMachine.FixedTick();
-            Debug.Log(Input.OnMouseLeftClick);
         }
 
         private void LateUpdate()
         {
             _stateMachine.LateTick();
+            if (_input.OnMouseLeftClick)
+                _health.TakeDamage(1);
         }
 
-        public void Hit()
-        {
-            Debug.Log("ATTACK IS SUCCEDD");
-        }
+
 
     }
 }

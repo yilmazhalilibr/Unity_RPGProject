@@ -66,7 +66,7 @@ namespace Unity_RPGProject.States
 
         public void AddAnyState(IState to, System.Func<bool> condition)
         {
-            StateTransformer stateTransformer = new StateTransformer(null, to, condition);
+            StateTransformer stateTransformer = new StateTransformer(to,null , condition);
             _anyTransformer.Add(stateTransformer);
         }
 

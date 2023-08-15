@@ -30,8 +30,10 @@ namespace Unity_RPGProject.Combats
 
             OnTakeHit?.Invoke(_currentHealth, _healthInfo.MaxHealth);
 
-            if (isDead)
+            if (isDead) 
+            {
                 OnDead?.Invoke();
+            }
 
 
         }

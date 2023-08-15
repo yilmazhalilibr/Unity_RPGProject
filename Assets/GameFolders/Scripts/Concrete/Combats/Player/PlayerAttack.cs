@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Controllers;
+using Unity_RPGProject.Enums;
 using Unity_RPGProject.ScriptableObjects;
-using Unity_RPGProject.Utilities.Raycast;
 using UnityEngine;
 
 namespace Unity_RPGProject.Combats
 {
-    public class PlayerAttack : IAttack
+    public class PlayerAttack : MonoBehaviour, IAttack
     {
         PlayerController _playerController;
 
@@ -19,33 +19,18 @@ namespace Unity_RPGProject.Combats
             _playerController = playerController;
         }
 
-        public bool AttackRaycastMouse()
+        public void Attack()
         {
-            RaycastHit[] hits = Physics.RaycastAll(RaycastExtension.GetMouseByRaycast());
-            foreach (RaycastHit hit in hits)
+            switch (Weapon.WeaponType)
             {
-                IHealth health = hit.transform.GetComponent<IHealth>();
-                if (health == null) continue;
+                case WeaponType.MELEE:
 
-                if (_playerController.Input.OnMouseLeftClick)
-                {
-                    if (GetDistanceEnemy(hit))
-                    {
-                        health.TakeDamage(Weapon.WeaponDamage);
-                        return true;
-                    }
-
-                }
+                    break;
+                default:
+                    Debug.Log("Attack is failed");
+                    break;
             }
-            return false;
-
         }
-
-        private bool GetDistanceEnemy(RaycastHit hit)
-        {
-            return Vector3.Distance(hit.transform.position, _playerController.transform.position) <= Weapon.WeaponRange;
-        }
-
 
     }
 }

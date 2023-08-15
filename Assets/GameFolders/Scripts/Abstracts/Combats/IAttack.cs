@@ -8,7 +8,7 @@ namespace Unity_RPGProject.Abstracts.Combats
     public interface IAttack
     {
         WeaponSO Weapon { get; }
-        bool AttackRaycastMouse();
+        void Attack();
     }
 }
 

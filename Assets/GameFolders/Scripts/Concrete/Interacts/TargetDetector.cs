@@ -26,7 +26,7 @@ namespace Unity_RPGProject.Interacts
             if (_playerController.Input.LastHitMouse.collider.TryGetComponent(out IHealth health))
             {
                 _currentTarget = Targets.Enemy;
-                Debug.Log("Current Target is : Enemy");
+                //Debug.Log("Current Target is : Enemy");
             }
             else if (_playerController.Input.LastHitMouse.collider.CompareTag("NPC"))
             {
