@@ -9,7 +9,7 @@ namespace Unity_RPGProject.States.PlayerStates
 {
     public class DeadState : IState
     {
-        PlayerController _playerController;
+        readonly PlayerController _playerController;
 
         public DeadState(PlayerController playerController)
         {

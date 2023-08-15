@@ -5,8 +5,8 @@ namespace Unity_RPGProject.States
 {
     public class StateMachine
     {
-        List<StateTransformer> _stateTransformers = new List<StateTransformer>();
-        List<StateTransformer> _anyTransformer = new List<StateTransformer>();
+        List<StateTransformer> _stateTransformers = new();
+        List<StateTransformer> _anyTransformer = new();
 
 
         IState _currentState;
@@ -60,13 +60,13 @@ namespace Unity_RPGProject.States
 
         public void AddState(IState to, IState from, System.Func<bool> condition)
         {
-            StateTransformer stateTransformer = new StateTransformer(from, to, condition);
+            StateTransformer stateTransformer = new(from, to, condition);
             _stateTransformers.Add(stateTransformer);
         }
 
         public void AddAnyState(IState to, System.Func<bool> condition)
         {
-            StateTransformer stateTransformer = new StateTransformer(to,null , condition);
+            StateTransformer stateTransformer = new(to, null, condition);
             _anyTransformer.Add(stateTransformer);
         }
 

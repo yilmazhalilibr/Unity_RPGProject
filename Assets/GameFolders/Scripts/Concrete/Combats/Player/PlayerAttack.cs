@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Unity_RPGProject.Combats
 {
-    public class PlayerAttack : MonoBehaviour, IAttack
+    public class PlayerAttack : MonoBehaviour
     {
         PlayerController _playerController;
 
@@ -19,18 +19,7 @@ namespace Unity_RPGProject.Combats
             _playerController = playerController;
         }
 
-        public void Attack()
-        {
-            switch (Weapon.WeaponType)
-            {
-                case WeaponType.MELEE:
-
-                    break;
-                default:
-                    Debug.Log("Attack is failed");
-                    break;
-            }
-        }
+       
 
     }
 }

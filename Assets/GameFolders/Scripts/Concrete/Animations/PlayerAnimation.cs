@@ -13,6 +13,7 @@ namespace Unity_RPGProject.Animations
         Vector3 _localVelocity;
 
         public static string ATTACK = "attack";
+        public static string ATTACK_STOP = "stopAttack";
         public static string FORWARD_SPEED = "forwardSpeed";
         public PlayerAnimation(PlayerController playerController)
         {
@@ -36,14 +37,14 @@ namespace Unity_RPGProject.Animations
 
         public async void PlayerAttackAnimAsync()
         {
-            _animator.SetBool(ATTACK, true);
+            _animator.SetTrigger(ATTACK);
             await Task.Delay((int)_animator.GetCurrentAnimatorStateInfo(0).length);
 
         }
 
         public void PlayerAttackAnimStop()
         {
-            _animator.SetBool(ATTACK, false);
+            _animator.SetTrigger(ATTACK_STOP);
         }
 
 

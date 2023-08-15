@@ -23,6 +23,8 @@ namespace Unity_RPGProject.Controllers
         [SerializeField] WeaponSO _weaponSO;
 
 
+        bool _onHit = false;
+
         NavMeshAgent _navMeshAgent;
         StateMachine _stateMachine;
         TargetDetector _targetDetector;
@@ -30,7 +32,6 @@ namespace Unity_RPGProject.Controllers
         IInputReader _input;
         IPlayerAnimation _playerAnimator;
         IMover _mover;
-        IAttack _attack;
         IHealth _health;
 
         public NavMeshAgent NavMeshAgent => _navMeshAgent;
@@ -40,8 +41,9 @@ namespace Unity_RPGProject.Controllers
         public IPlayerAnimation PlayerAnimation => _playerAnimator;
         public IInputReader Input => _input;
 
-        private bool CanMove => _navMeshAgent.velocity != Vector3.zero || Input.OnMouseLeftClick;
-        private bool CanAttack => _navMeshAgent.velocity == Vector3.zero && _targetDetector.CurrentTarget == Enums.Targets.Enemy && Input.OnMouseLeftClick;
+        private bool CanMove => _navMeshAgent.velocity != Vector3.zero || Input.OnMouseLeftClick && !CanAttack;
+        private bool CanAttack => _navMeshAgent.velocity == Vector3.zero && _targetDetector.CurrentTargetType == Enums.Targets.Enemy && Input.OnMouseLeftClick ;
+        public bool OnHitInfo { get { return _onHit; } set { _onHit = value; } }
 
 
         private void Awake()
@@ -52,7 +54,6 @@ namespace Unity_RPGProject.Controllers
             _input = new InputReader(this);
             _playerAnimator = new PlayerAnimation(this);
             _stateMachine = new StateMachine();
-            _attack = new PlayerAttack(this);
             _mover = new Mover(this);
             _targetDetector = new TargetDetector(this);
 
@@ -91,10 +92,12 @@ namespace Unity_RPGProject.Controllers
         private void LateUpdate()
         {
             _stateMachine.LateTick();
-            if (_input.OnMouseLeftClick)
-                _health.TakeDamage(1);
         }
 
+        public void OnHit()
+        {
+            _onHit = true;
+        }
 
 
     }

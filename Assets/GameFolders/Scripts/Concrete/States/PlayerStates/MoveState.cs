@@ -32,6 +32,8 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void OnEnter()
         {
+            _playerController.PlayerAnimation.PlayerAttackAnimStop();
+
             //Debug.Log($"{nameof(MoveState)} {nameof(OnEnter)}");
 
         }
