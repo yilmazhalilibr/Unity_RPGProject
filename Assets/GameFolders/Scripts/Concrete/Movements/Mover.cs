@@ -20,26 +20,18 @@ namespace Unity_RPGProject.Movements
         {
             if (!_playerController.Input.OnMouseLeftClick) return false;
 
-            Ray ray = RaycastExtension.GetMouseByRaycast();
-            RaycastHit hit;
+            var hit = _playerController.Input.LastHitMouse;
 
-            bool hasHit = Physics.Raycast(ray, out hit);
-
-            if (hasHit)
+            if (hit.collider.TryGetComponent(out IHealth health)) // This component need will be next time to change with EnemyController.
             {
-                if (hit.collider.TryGetComponent(out IHealth health)) // This component need will be next time to change with EnemyController.
-                {
-                    _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;
-                    _playerController.NavMeshAgent.destination = hit.point;
-
-                }
-                else
-                {
-                    _playerController.NavMeshAgent.destination = hit.point;
-                }
-                return true;
+                _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;
+                _playerController.NavMeshAgent.destination = hit.point;
             }
-            return false;
+            else
+            {
+                _playerController.NavMeshAgent.destination = hit.point;
+            }
+            return true;
 
         }
 

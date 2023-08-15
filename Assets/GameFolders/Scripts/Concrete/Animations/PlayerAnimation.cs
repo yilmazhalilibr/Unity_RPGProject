@@ -41,9 +41,9 @@ namespace Unity_RPGProject.Animations
 
         }
 
-        public void PlayerAttackAnimStop() 
+        public void PlayerAttackAnimStop()
         {
-            _animator.SetBool(ATTACK,false);
+            _animator.SetBool(ATTACK, false);
         }
 
 
