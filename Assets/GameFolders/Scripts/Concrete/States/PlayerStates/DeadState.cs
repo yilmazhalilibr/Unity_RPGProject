@@ -27,6 +27,7 @@ namespace Unity_RPGProject.States.PlayerStates
         public void OnEnter()
         {
             _playerController.GetComponent<Animator>().SetTrigger("die");
+            _playerController.enabled = false;
         }
 
         public void OnExit()
