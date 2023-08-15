@@ -18,6 +18,8 @@ namespace Unity_RPGProject.Movements
 
         public bool Move()
         {
+            if (!_playerController.Input.OnMouseLeftClick) return false;
+
             Ray ray = RaycastExtension.GetMouseByRaycast();
             RaycastHit hit;
 
@@ -25,7 +27,6 @@ namespace Unity_RPGProject.Movements
 
             if (hasHit)
             {
-                if (!_playerController.Input.OnMouseLeftClick) return false;
                 if (hit.collider.TryGetComponent(out IHealth health)) // This component need will be next time to change with EnemyController.
                 {
                     _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;

@@ -1,3 +1,4 @@
+using Unity.Collections;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.ScriptableObjects;
 using UnityEngine;
@@ -8,7 +9,8 @@ namespace Unity_RPGProject.Combats
     {
         [SerializeField] HealthSO _healthInfo;
 
-        float _currentHealth;
+        [SerializeField] float _currentHealth;
+
 
         public bool isDead => _currentHealth <= 0;
 
