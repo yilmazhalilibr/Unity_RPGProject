@@ -36,6 +36,11 @@ namespace Unity_RPGProject.Interacts
             {
                 _currentTargetType = Targets.NPC;
             }
+            else
+            {
+                _currentTargetType = Targets.UNDEFINITION;
+
+            }
 
 
         }

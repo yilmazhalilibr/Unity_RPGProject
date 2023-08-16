@@ -36,6 +36,7 @@ namespace Unity_RPGProject.Animations
 
         public async void PlayerAttackAnimAsync()
         {
+            _animator.ResetTrigger(ATTACK_STOP);
             _animator.SetTrigger(ATTACK);
 
             while (!_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK))
@@ -52,6 +53,7 @@ namespace Unity_RPGProject.Animations
 
         public void PlayerAttackAnimStop()
         {
+            _animator.ResetTrigger(ATTACK);
             _animator.SetTrigger(ATTACK_STOP);
         }
 
