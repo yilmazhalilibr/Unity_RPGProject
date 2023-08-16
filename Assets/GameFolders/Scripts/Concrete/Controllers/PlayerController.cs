@@ -41,10 +41,22 @@ namespace Unity_RPGProject.Controllers
         public IPlayerAnimation PlayerAnimation => _playerAnimator;
         public IInputReader Input => _input;
 
-        private bool CanMove => _navMeshAgent.velocity != Vector3.zero || Input.OnMouseLeftClick && !CanAttack;
-        private bool CanAttack => _navMeshAgent.velocity == Vector3.zero && _targetDetector.CurrentTargetType == Enums.Targets.Enemy && Input.OnMouseLeftClick ;
+        public bool CanMove => Input.OnMouseLeftClick || _navMeshAgent.velocity != Vector3.zero;
+        public bool CanAttack
+        {
+            get
+            {
+                return 
+                    _navMeshAgent.velocity == Vector3.zero &&
+                    _targetDetector.CurrentTargetType == Enums.Targets.Enemy &&
+                    Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= Weapon.WeaponRange;
+            }
+            set
+            {
+                _onHit = value;
+            }
+        }
         public bool OnHitInfo { get { return _onHit; } set { _onHit = value; } }
-
 
         private void Awake()
         {
@@ -72,6 +84,8 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
             _stateMachine.AddState(idleState, attackState, () => CanAttack);
             _stateMachine.AddState(attackState, idleState, () => !CanAttack);
+            _stateMachine.AddState(attackState, moveState, () => CanMove);
+            _stateMachine.AddState(moveState, attackState, () => CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
 
@@ -81,7 +95,6 @@ namespace Unity_RPGProject.Controllers
         private void Update()
         {
             _stateMachine.Tick();
-            Debug.Log(CanAttack + "Attack");
         }
 
         private void FixedUpdate()
@@ -94,6 +107,7 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.LateTick();
         }
 
+        //Animation Event's method.
         public void OnHit()
         {
             _onHit = true;

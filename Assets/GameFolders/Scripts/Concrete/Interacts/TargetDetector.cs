@@ -26,7 +26,7 @@ namespace Unity_RPGProject.Interacts
 
         public void MouseTargetHandle()
         {
-            if (_playerController.Input.LastHitMouse.collider.TryGetComponent(out IHealth health))
+            if (_playerController.Input.LastHitMouse.collider.TryGetComponent(out IHealth health) && !_playerController.Input.LastHitMouse.collider.TryGetComponent(out PlayerController pController))
             {
                 _currentTargetType = Targets.Enemy;
                 _currentTargetTransform = _playerController.Input.LastHitMouse.collider.transform;

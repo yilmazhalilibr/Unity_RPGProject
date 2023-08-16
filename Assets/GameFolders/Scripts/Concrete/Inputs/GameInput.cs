@@ -37,6 +37,15 @@ namespace Unity_RPGProject.Concrete.Inputs
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MouseMultiTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d752a09-10fa-4751-b494-b742b7d71918"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""MultiTap"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -50,6 +59,17 @@ namespace Unity_RPGProject.Concrete.Inputs
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41240b45-0f9e-4f69-b3c0-6ff944c1bcdf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseMultiTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -59,6 +79,7 @@ namespace Unity_RPGProject.Concrete.Inputs
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+            m_Player_MouseMultiTap = m_Player.FindAction("MouseMultiTap", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -121,11 +142,13 @@ namespace Unity_RPGProject.Concrete.Inputs
         private readonly InputActionMap m_Player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Mouse;
+        private readonly InputAction m_Player_MouseMultiTap;
         public struct PlayerActions
         {
             private @GameInput m_Wrapper;
             public PlayerActions(@GameInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+            public InputAction @MouseMultiTap => m_Wrapper.m_Player_MouseMultiTap;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -138,6 +161,9 @@ namespace Unity_RPGProject.Concrete.Inputs
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @MouseMultiTap.started += instance.OnMouseMultiTap;
+                @MouseMultiTap.performed += instance.OnMouseMultiTap;
+                @MouseMultiTap.canceled += instance.OnMouseMultiTap;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -145,6 +171,9 @@ namespace Unity_RPGProject.Concrete.Inputs
                 @Mouse.started -= instance.OnMouse;
                 @Mouse.performed -= instance.OnMouse;
                 @Mouse.canceled -= instance.OnMouse;
+                @MouseMultiTap.started -= instance.OnMouseMultiTap;
+                @MouseMultiTap.performed -= instance.OnMouseMultiTap;
+                @MouseMultiTap.canceled -= instance.OnMouseMultiTap;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -165,6 +194,7 @@ namespace Unity_RPGProject.Concrete.Inputs
         public interface IPlayerActions
         {
             void OnMouse(InputAction.CallbackContext context);
+            void OnMouseMultiTap(InputAction.CallbackContext context);
         }
     }
 }

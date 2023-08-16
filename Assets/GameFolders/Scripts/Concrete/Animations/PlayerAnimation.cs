@@ -31,14 +31,22 @@ namespace Unity_RPGProject.Animations
 
         public void PlayerAttackAnim()
         {
-            _animator.SetBool(ATTACK, true);
-
+            _animator.SetTrigger(ATTACK);
         }
 
         public async void PlayerAttackAnimAsync()
         {
             _animator.SetTrigger(ATTACK);
-            await Task.Delay((int)_animator.GetCurrentAnimatorStateInfo(0).length);
+
+            while (!_animator.GetCurrentAnimatorStateInfo(0).IsName(ATTACK))
+            {
+                await Task.Yield();
+            }
+
+            while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            {
+                await Task.Yield();
+            }
 
         }
 
