@@ -24,10 +24,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
   m_Tag: 
-  m_SpeedParameter: forwardSpeed
+  m_SpeedParameter: enemySpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: forwardSpeed
+  m_TimeParameter: enemySpeed
 --- !u!1102 &-8905706439121348087
 AnimatorState:
   serializedVersion: 6
@@ -92,8 +92,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: attack
+  - m_ConditionMode: 1
+    m_ConditionEvent: enemyAttackStop
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8905706439121348087}
@@ -104,7 +104,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.6875
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -118,8 +118,26 @@ AnimatorController:
   m_Name: EnemyAnimationController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: forwardSpeed
+  - m_Name: enemySpeed
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemyDie
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemyAttack
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: enemyAttackStop
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -195,7 +213,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: enemyDie
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1800411156283121678}
   m_Solo: 0
@@ -205,7 +226,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -228,7 +249,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: b1a5e04ae51004842aba06704a6c2903, type: 3}
-    m_Threshold: 3
+    m_Threshold: 2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -236,16 +257,16 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 1cb8ed3cbba15f0479fbae54e0a963df, type: 3}
-    m_Threshold: 7
+    m_Threshold: 4
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: forwardSpeed
+  m_BlendParameter: enemySpeed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 7
+  m_MaxThreshold: 4
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -258,7 +279,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: attack
+    m_ConditionEvent: enemyAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9202488253502995934}

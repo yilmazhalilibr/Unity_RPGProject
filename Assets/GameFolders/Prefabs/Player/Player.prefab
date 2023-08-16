@@ -37,7 +37,7 @@ Transform:
   - {fileID: 1338654492279038732}
   - {fileID: 4853938251177862846}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6543363390244643710
 Animator:
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthInfo: {fileID: 11400000, guid: 874e11121db5deb4988c9a16274e6f42, type: 2}
+  _currentHealth: 0
 --- !u!114 &1328041495112951786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ NavMeshAgent:
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 1000
-  m_StoppingDistance: 1
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -253,39 +254,10 @@ PrefabInstance:
     - {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 188290, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1602772464208214017}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
 --- !u!4 &4853938251177862846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 435482, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_PrefabInstance: {fileID: 4853938251178017700}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4853938251178138662 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 188290, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
-  m_PrefabInstance: {fileID: 4853938251178017700}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &1602772464208214017
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4853938251178138662}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: -0.1, y: 0, z: 0}

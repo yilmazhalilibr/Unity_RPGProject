@@ -16,6 +16,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void FixedTick()
         {
+
         }
 
         public void LateTick()
