@@ -35,6 +35,16 @@ namespace Unity_RPGProject.PatrolPaths
             return i + 1;
         }
 
+        public Transform[] GetAllWays()
+        {
+            Transform[] childs = new Transform[transform.childCount];
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                childs[i] = transform.GetChild(i);
+            }
+            return childs;
+        }
+
     }
 }
 

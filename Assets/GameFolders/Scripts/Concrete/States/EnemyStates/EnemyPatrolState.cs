@@ -16,11 +16,12 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void FixedTick()
         {
+
         }
 
         public void LateTick()
         {
-            _enemyController.PlayerDetector();
+            _enemyController.PlayerDetector.PlayerChaseDetector();
         }
 
         public void OnEnter()

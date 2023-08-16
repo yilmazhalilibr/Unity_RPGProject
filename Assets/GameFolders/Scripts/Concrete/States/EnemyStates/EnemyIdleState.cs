@@ -21,12 +21,12 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void FixedTick()
         {
+            _enemyController.PlayerDetector.PlayerChaseDetector();
+            PatrolHandle();
         }
 
         public void LateTick()
         {
-            _enemyController.PlayerDetector();
-            PatrolHandle();
 
         }
 
@@ -37,6 +37,7 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void OnExit()
         {
+
         }
 
         public void Tick()
