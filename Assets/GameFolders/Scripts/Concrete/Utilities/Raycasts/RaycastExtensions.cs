@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity_RPGProject.Utilities.Raycast
 {
-    public static class RaycastExtension
+    public static class RaycastExtensions
     {
         public static Ray GetMouseByRaycast()
         {

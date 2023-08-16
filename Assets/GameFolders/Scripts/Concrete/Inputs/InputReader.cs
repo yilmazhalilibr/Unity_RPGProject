@@ -47,7 +47,7 @@ namespace Unity_RPGProject.Inputs
 
         public void MouseRayLastHit()
         {
-            Ray ray = RaycastExtension.GetMouseByRaycast();
+            Ray ray = RaycastExtensions.GetMouseByRaycast();
             Physics.Raycast(ray, out _lastHit);
         }
 
