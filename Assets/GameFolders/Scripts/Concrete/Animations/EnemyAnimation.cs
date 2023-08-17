@@ -14,10 +14,10 @@ namespace Unity_RPGProject.Animations
         Vector3 _localVelocity;
 
 
-        static string ATTACK = "EnemyAttack";
-        static string ATTACK_STOP = "EnemyAttackStop";
-        static string DIE = "EnemyDie";
-        static string ENEMYSPEED = "EnemySpeed";
+        static string ATTACK = "enemyAttack";
+        static string ATTACK_STOP = "enemyAttackStop";
+        static string DIE = "enemyDie";
+        static string ENEMYSPEED = "enemySpeed";
 
         public EnemyAnimation(EnemyController enemyController)
         {
