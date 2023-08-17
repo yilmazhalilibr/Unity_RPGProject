@@ -8,6 +8,7 @@ namespace Unity_RPGProject.Abstracts.Animations
     {
         void EnemyAttack();
         void EnemyAttackStop();
+        void EnemyDie();
         void EnemyMove();
     }
 

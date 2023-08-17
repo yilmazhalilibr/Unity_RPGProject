@@ -128,17 +128,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1338654492279038732, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
   m_PrefabInstance: {fileID: 8173779732268342854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &624014344 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7049499501517425104, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-  m_PrefabInstance: {fileID: 8019020758215124905}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92a716e84dff264cbb416ffce779a5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 5976250996874066598, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
@@ -167,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.14
+      value: -17.28
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -175,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.95
+      value: 3.09
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -208,14 +197,6 @@ PrefabInstance:
     - target: {fileID: 6529010884294887886, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: _patrolPath
       value: 
-      objectReference: {fileID: 624014344}
-    - target: {fileID: 6529010884294887886, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
-      propertyPath: _chaseDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8402282320550749844, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -230,6 +211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2160163345996970304, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2811951322087794657, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
       propertyPath: m_Name
       value: Core

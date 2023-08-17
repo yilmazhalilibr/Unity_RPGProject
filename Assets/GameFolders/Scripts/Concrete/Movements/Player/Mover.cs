@@ -35,8 +35,10 @@ namespace Unity_RPGProject.Movements
 
         }
 
-
-
+        public bool Move(Transform transform)
+        {
+            return false;
+        }
     }
 }
 

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2484319999065306489, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3448081928087938033, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -22,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.91
+      value: -19.14
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.15324426
+      value: 1.95
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_LocalRotation.w
@@ -68,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d5d82e0e612430146bebfcf06ca3a163, type: 2}
+    - target: {fileID: 7095786845442677794, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7373853601205111696, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
     - {fileID: 1328041495112951786, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
@@ -99,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c9ab1cffd332c4db491e09bf7e7979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _chaseDistance: 5
 --- !u!4 &5777082421535778012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}

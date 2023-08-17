@@ -18,7 +18,6 @@ namespace Unity_RPGProject.States.EnemyStates
         public void FixedTick()
         {
             Debug.Log("EnemyChase State Tick");
-            _enemyController.PlayerDetector.PlayerChaseDetector();
         }
 
         public void LateTick()

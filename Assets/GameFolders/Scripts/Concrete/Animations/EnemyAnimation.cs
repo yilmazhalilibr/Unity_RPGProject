@@ -27,6 +27,7 @@ namespace Unity_RPGProject.Animations
 
         public void EnemyAttack()
         {
+            _animator.ResetTrigger(ATTACK_STOP);
             _animator.SetTrigger(ATTACK);
         }
 

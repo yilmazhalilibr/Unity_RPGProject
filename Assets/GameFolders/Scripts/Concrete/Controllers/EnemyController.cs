@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Unity_RPGProject.Abstracts.Animations;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Movements;
@@ -17,31 +18,34 @@ namespace Unity_RPGProject.Controllers
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] float _chaseDistance = 5f;
-        [SerializeField] PatrolPath _patrolPath;
 
-        float _chaseCancelTime = 3f;
-        float _chaseCurrentTime = 0f;
         bool _canPatrol;
         bool _canChase;
         bool _canAttack = false;
 
+        PatrolPath _patrolPath;
         StateMachine _stateMachine;
         NavMeshAgent _navMeshAgent;
         Transform _player;
-        PlayerDetector _playerDetector;
 
 
         IHealth _health;
         IMover _mover;
         IEnemyAnimation _enemyAnimation;
 
-        public float ChaseDistance => _chaseDistance;
-        public float ChaseCancelTime { get { return _chaseCancelTime; } set { _chaseCancelTime = value; } }
-        public float ChaseCurrentTime { get { return _chaseCurrentTime; } set { _chaseCurrentTime = value; } }
+
+        public NavMeshAgent NavMeshAgent => _navMeshAgent;
+        public Transform Player => _player;
+        public PatrolPath PatrolPath => _patrolPath;
+
+        public IMover Mover => _mover;
+        public IEnemyAnimation EnemyAnimation => _enemyAnimation;
+
         public bool CanPatrol
         {
             get
             {
+
                 return _canPatrol;
             }
             set
@@ -49,23 +53,29 @@ namespace Unity_RPGProject.Controllers
                 _canPatrol = value;
             }
         }
-        public bool CanChase => _canChase;
-        public bool CanAttack { get { return _canAttack; } set { _canAttack = value; } }
+        public bool CanChase
+        {
+            get
+            {
 
-        public NavMeshAgent NavMeshAgent => _navMeshAgent;
-        public Transform Player => _player;
-        public PlayerDetector PlayerDetector => _playerDetector;
-        public PatrolPath PatrolPath => _patrolPath;
+                return _canChase;
+            }
+            set
+            {
+                _canChase = value;
+            }
+        }
 
-        public IMover Mover => _mover;
-        public IEnemyAnimation EnemyAnimation => _enemyAnimation;
+
         private void Awake()
         {
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+
             _stateMachine = new StateMachine();
-            _playerDetector = new PlayerDetector(this);
             _mover = new EnemyMover(this);
             _enemyAnimation = new EnemyAnimation(this);
 
+            _patrolPath = GameObject.FindAnyObjectByType<PatrolPath>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
@@ -73,11 +83,10 @@ namespace Unity_RPGProject.Controllers
 
         private void Start()
         {
-            _player = _playerDetector.PlayerFind();
 
             EnemyPatrolState enemyPatrolState = new(this);
             EnemyIdleState enemyIdleState = new(this);
-            EnemyDeadState enemyDeadState = new();
+            EnemyDeadState enemyDeadState = new(this);
             EnemyChaseState enemyChaseState = new(this);
             EnemyAttackState enemyAttackState = new();
 
