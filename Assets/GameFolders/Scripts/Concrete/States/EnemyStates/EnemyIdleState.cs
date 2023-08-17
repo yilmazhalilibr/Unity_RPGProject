@@ -20,6 +20,8 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void FixedTick()
         {
+            _enemyController.CanChase = _enemyController.IsChase();
+
             _currentIdleTime += Time.deltaTime;
 
             if (_currentIdleTime >= _idleTime)

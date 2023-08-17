@@ -23,15 +23,8 @@ namespace Unity_RPGProject.States.EnemyStates
         {
             Debug.Log("EnemyPatrolState Tick");
 
-            if (_patrolWays.Length - 1 < _patrolIndex) { _patrolIndex = 0; }
-
-            _enemyController.NavMeshAgent.destination = _patrolWays[_patrolIndex].transform.position;
-            if (_enemyController.transform.position.z == _patrolWays[_patrolIndex].transform.position.z)
-            {
-                _patrolIndex++;
-                _enemyController.CanPatrol = false;
-                OnExit();
-            }
+            _enemyController.CanChase = _enemyController.IsChase();
+            PatrolHandle();
 
         }
 
@@ -45,7 +38,6 @@ namespace Unity_RPGProject.States.EnemyStates
             _enemyController.NavMeshAgent.speed = 2f;
             _enemyController.NavMeshAgent.stoppingDistance = 0f;
 
-
         }
 
         public void OnExit()
@@ -57,7 +49,18 @@ namespace Unity_RPGProject.States.EnemyStates
 
         }
 
+        private void PatrolHandle()
+        {
+            if (_patrolWays.Length - 1 < _patrolIndex) { _patrolIndex = 0; }
 
+            _enemyController.NavMeshAgent.destination = _patrolWays[_patrolIndex].transform.position;
+            if (_enemyController.transform.position.z == _patrolWays[_patrolIndex].transform.position.z)
+            {
+                _patrolIndex++;
+                _enemyController.CanPatrol = false;
+                OnExit();
+            }
+        }
 
 
 

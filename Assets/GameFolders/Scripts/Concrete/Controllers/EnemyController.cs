@@ -41,6 +41,8 @@ namespace Unity_RPGProject.Controllers
         public IMover Mover => _mover;
         public IEnemyAnimation EnemyAnimation => _enemyAnimation;
 
+        public float ChaseDistance => _chaseDistance;
+
         public bool CanPatrol
         {
             get
@@ -123,7 +125,17 @@ namespace Unity_RPGProject.Controllers
             Gizmos.DrawWireSphere(transform.position, _chaseDistance);
         }
 
+        public bool IsChase()
+        {
+            float distance = Vector3.Distance(transform.position, Player.transform.position);
+            if (ChaseDistance >= distance)
+            {
+                _canPatrol = false;
+                return true;
+            }
+            return false;
 
+        }
 
 
     }
