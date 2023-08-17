@@ -16,16 +16,22 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void FixedTick()
         {
+            _enemyController.PlayerDetector.PlayerChaseDetector();
+            Debug.Log("EnemyPatrolState Tick");
+            _enemyController.Mover.Move();
 
         }
 
         public void LateTick()
         {
-            _enemyController.PlayerDetector.PlayerChaseDetector();
+            _enemyController.EnemyAnimation.EnemyMove();
+
         }
 
         public void OnEnter()
         {
+            _enemyController.NavMeshAgent.speed = 2f;
+
         }
 
         public void OnExit()
@@ -36,7 +42,7 @@ namespace Unity_RPGProject.States.EnemyStates
         {
         }
 
-       
+
 
     }
 }

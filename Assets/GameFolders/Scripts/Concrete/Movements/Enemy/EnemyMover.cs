@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
@@ -22,15 +20,22 @@ namespace Unity_RPGProject.Movements.Enemy
 
         public bool Move()
         {
-            if (_wayIndex > _wayList.Length) { _wayIndex = 0; }
 
-            float distanceWaypoint = Vector3.Distance(_enemyController.transform.position, _wayList[_wayIndex].transform.position);
+            if (_wayIndex > _wayList.Length - 1) { _wayIndex = 0; }
 
-            // It's find distance enemy with way's point and i need going to enemy to way point between.
+            _enemyController.NavMeshAgent.destination = _wayList[_wayIndex].transform.position;
 
-            _wayIndex++;
-            return false;
+            if (_enemyController.NavMeshAgent.velocity == Vector3.zero)
+            {
+                _enemyController.CanPatrol = false;
+                _wayIndex++;
+
+            }
+
+            return true;
         }
+
+
 
 
 

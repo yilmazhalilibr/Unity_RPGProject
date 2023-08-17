@@ -27,13 +27,11 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void OnExit()
         {
-            Debug.Log("Attack State Disable");
             _playerController.PlayerAnimation.PlayerAttackAnimStop();
         }
 
         public void Tick()
         {
-            Debug.Log("Attack State Enable");
         }
 
         public void FixedTick()

@@ -128,11 +128,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1338654492279038732, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
   m_PrefabInstance: {fileID: 8173779732268342854}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &624014343 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7273124831665088220, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-  m_PrefabInstance: {fileID: 8019020758215124905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &624014344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7049499501517425104, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
@@ -172,7 +167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.91
+      value: -19.14
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -180,7 +175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.15324426
+      value: 1.95
       objectReference: {fileID: 0}
     - target: {fileID: 5777082421535778012, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -214,42 +209,19 @@ PrefabInstance:
       propertyPath: _patrolPath
       value: 
       objectReference: {fileID: 624014344}
+    - target: {fileID: 6529010884294887886, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
+      propertyPath: _chaseDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8402282320550749844, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
---- !u!1 &2080324811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2080324812}
-  m_Layer: 0
-  m_Name: Waypoint (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2080324812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080324811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.95, y: 0.12, z: -3.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 624014343}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8019020758215124905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,14 +233,6 @@ PrefabInstance:
     - target: {fileID: 2811951322087794657, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
       propertyPath: m_Name
       value: Core
-      objectReference: {fileID: 0}
-    - target: {fileID: 3526098063784219258, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787986321940412223, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4391376828027782934, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
       propertyPath: m_RootOrder
@@ -324,10 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 112179583}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7273124831665088220, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2080324812}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
 --- !u!1001 &8173779732268342854

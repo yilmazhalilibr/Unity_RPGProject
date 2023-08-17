@@ -10,40 +10,41 @@ namespace Unity_RPGProject.States.EnemyStates
     public class EnemyIdleState : IState
     {
         EnemyController _enemyController;
-
-        float _maxIdleTime = Random.RandomRange(0, 5f);
+        [System.Obsolete]
+        float _maxIdleTime;
         float _currentTime = 0f;
 
         public EnemyIdleState(EnemyController enemyController)
         {
             _enemyController = enemyController;
+            _maxIdleTime = Random.Range(0f, 4f);
         }
 
         public void FixedTick()
         {
-            _enemyController.PlayerDetector.PlayerChaseDetector();
-            PatrolHandle();
+            PatrolWaiterHandle();
         }
 
         public void LateTick()
         {
+            Debug.Log("EnemyIdleState Tick");
 
         }
 
         public void OnEnter()
         {
-            _maxIdleTime = Random.RandomRange(0, 5f);
+            _maxIdleTime = Random.Range(0f, 4f);
         }
 
         public void OnExit()
         {
-
+            _currentTime = 0f;
         }
 
         public void Tick()
         {
         }
-        private void PatrolHandle()
+        private void PatrolWaiterHandle()
         {
             _currentTime += Time.deltaTime;
             if (_maxIdleTime < _currentTime && !_enemyController.CanAttack)

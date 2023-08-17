@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity_RPGProject.Abstracts.Animations
 {
-    public interface IPlayerAnimation
+    public interface IPlayerAnimation : IAnimations
     {
         void PlayerMoveAnim();
         void PlayerAttackAnimAsync();

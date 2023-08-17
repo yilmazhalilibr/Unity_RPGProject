@@ -46,7 +46,7 @@ namespace Unity_RPGProject.Controllers
         {
             get
             {
-                return 
+                return
                     _navMeshAgent.velocity == Vector3.zero &&
                     _targetDetector.CurrentTargetType == Enums.Targets.Enemy &&
                     Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= Weapon.WeaponRange;

@@ -21,7 +21,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void LateTick()
         {
-            Debug.Log("IdleTick Enable");
         }
 
         public void OnEnter()
