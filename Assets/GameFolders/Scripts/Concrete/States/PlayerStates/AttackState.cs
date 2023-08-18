@@ -32,6 +32,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
+            Debug.Log("AttackState Tick");
         }
 
         public void FixedTick()

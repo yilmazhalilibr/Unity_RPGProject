@@ -20,6 +20,7 @@ namespace Unity_RPGProject.States.PlayerStates
         public void FixedTick()
         {
             _playerController.Mover.Move();
+            Debug.Log("Move State Tick");
 
         }
 

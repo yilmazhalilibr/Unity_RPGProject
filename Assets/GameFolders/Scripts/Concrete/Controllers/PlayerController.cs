@@ -22,7 +22,6 @@ namespace Unity_RPGProject.Controllers
         [Header("Combat")]
         [SerializeField] WeaponSO _weaponSO;
 
-
         bool _onHit = false;
 
         NavMeshAgent _navMeshAgent;
@@ -49,7 +48,8 @@ namespace Unity_RPGProject.Controllers
                 return
                     _navMeshAgent.velocity == Vector3.zero &&
                     _targetDetector.CurrentTargetType == Enums.Targets.Enemy &&
-                    Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= Weapon.WeaponRange;
+                    Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= Weapon.WeaponRange &&
+                    !TargetDetector.CurrentTargetTransform.GetComponent<IHealth>().isDead;
             }
             set
             {
@@ -82,12 +82,11 @@ namespace Unity_RPGProject.Controllers
 
             _stateMachine.AddState(idleState, moveState, () => CanMove);
             _stateMachine.AddState(moveState, idleState, () => !CanMove);
-            _stateMachine.AddState(idleState, attackState, () => CanAttack);
-            _stateMachine.AddState(attackState, idleState, () => !CanAttack);
+            _stateMachine.AddState(attackState, idleState, () => !CanAttack && _navMeshAgent.velocity == Vector3.zero);
             _stateMachine.AddState(attackState, moveState, () => CanMove);
-            _stateMachine.AddState(moveState, attackState, () => CanAttack);
 
             _stateMachine.AddAnyState(deadState, () => _health.isDead);
+            _stateMachine.AddAnyState(attackState, () => CanAttack && !TargetDetector.CurrentTargetTransform.GetComponent<IHealth>().isDead);
 
             _stateMachine.SetState(idleState);
         }
