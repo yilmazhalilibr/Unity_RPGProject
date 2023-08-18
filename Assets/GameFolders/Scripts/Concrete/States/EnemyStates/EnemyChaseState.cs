@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.States;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
@@ -13,24 +14,23 @@ namespace Unity_RPGProject.States.EnemyStates
         EnemyController _enemyController;
 
         float _currentTime;
-        float _chaseTime = 3f;
+        float _chaseTime;
+
         public EnemyChaseState(EnemyController enemyController)
         {
             _enemyController = enemyController;
+            _chaseTime = _enemyController.ChaseTime;
         }
         public void FixedTick()
         {
             Debug.Log("EnemyChase State Tick");
 
-            _enemyController.NavMeshAgent.destination = _enemyController.Player.transform.position;
-            _currentTime += Time.deltaTime;
-            if (_currentTime >= _chaseTime && !_enemyController.IsChase())
-            {
-                _enemyController.CanChase = false;
-                _enemyController.CanPatrol = true;
-            }
+            _enemyController.Mover.Move();
+
+            EnemyChaseHandle();
 
         }
+
 
         public void LateTick()
         {
@@ -41,7 +41,7 @@ namespace Unity_RPGProject.States.EnemyStates
         public void OnEnter()
         {
             _enemyController.NavMeshAgent.speed = 3.5f;
-            _enemyController.NavMeshAgent.stoppingDistance = 2f;
+            _enemyController.NavMeshAgent.stoppingDistance = _enemyController.Weapon.WeaponRange;
         }
 
         public void OnExit()
@@ -50,6 +50,27 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void Tick()
         {
+        }
+        private void EnemyChaseHandle()
+        {
+            if (_enemyController.PlayerHealth.isDead)
+            {
+                _enemyController.StatesChangeHandle(true, "CanPatrol");
+            }
+            else if (_enemyController.NavMeshAgent.velocity == Vector3.zero)
+            {
+                _enemyController.StatesChangeHandle(true, "CanAttack");
+
+            }
+            else if (!_enemyController.IsChase())
+            {
+                _currentTime += Time.deltaTime;
+            }
+            if (_currentTime >= _chaseTime && !_enemyController.IsChase())
+            {
+                _enemyController.StatesChangeHandle(true, "CanPatrol");
+
+            }
         }
 
 

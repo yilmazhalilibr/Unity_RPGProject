@@ -47,6 +47,7 @@ namespace Unity_RPGProject.Animations
         {
             _animator.SetTrigger(DIE);
         }
+
     }
 }
 

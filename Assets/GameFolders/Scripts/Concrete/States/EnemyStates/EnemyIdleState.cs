@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity_RPGProject.Abstracts.States;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
@@ -27,8 +25,8 @@ namespace Unity_RPGProject.States.EnemyStates
             if (_currentIdleTime >= _idleTime)
             {
                 _currentIdleTime = 0f;
-                _enemyController.CanPatrol = true;
-                OnExit();
+                _enemyController.StatesChangeHandle(true, "CanPatrol");
+
             }
 
         }

@@ -17,7 +17,18 @@ namespace Unity_RPGProject.Movements.Enemy
 
         public bool Move()
         {
-            return true;
+            if (_enemyController.PatrolWay != null && _enemyController.CanPatrol)
+            {
+                _enemyController.NavMeshAgent.destination = _enemyController.PatrolWay.transform.position;
+                return true;
+            }
+            else if (_enemyController.CanChase)
+            {
+                _enemyController.NavMeshAgent.destination = _enemyController.Player.transform.position;
+                return true;
+            }
+
+            return false;
         }
     }
 }
