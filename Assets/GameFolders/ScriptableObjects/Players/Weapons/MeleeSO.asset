@@ -15,5 +15,5 @@ MonoBehaviour:
   _weaponPrefab: {fileID: 0}
   _weaponType: 5
   _animationClip: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
-  _weaponDamage: 1
+  _weaponDamage: 30
   _weaponRange: 2

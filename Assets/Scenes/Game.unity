@@ -197,11 +197,15 @@ PrefabInstance:
     - target: {fileID: 6529010884294887886, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: _weapon
       value: 
-      objectReference: {fileID: 11400000, guid: e22e84e6518e44f4dbe3ebeb601d43c3, type: 2}
+      objectReference: {fileID: 11400000, guid: cb72f139ba9c6514aa1e822dc0fb968c, type: 2}
     - target: {fileID: 6529010884294887886, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
       propertyPath: _patrolPath
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7591840451635504864, guid: 8a86723a3191f3149a8b68176c1deaef, type: 3}
+      propertyPath: _healthInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a6a2c06c93c9804b838e0cfe3b1a050, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -215,10 +219,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2160163345996970304, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2811951322087794657, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
       propertyPath: m_Name
       value: Core
