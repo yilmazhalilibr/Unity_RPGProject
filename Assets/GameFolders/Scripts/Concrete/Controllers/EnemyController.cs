@@ -20,6 +20,9 @@ namespace Unity_RPGProject.Controllers
         [SerializeField] float _chaseTime = 5f;
         [Header("Combats")]
         [SerializeField] WeaponSO _weapon;
+        [Header("Patrol Of Enemy")]
+        [SerializeField] PatrolPath _patrolPath;
+
 
         public event System.Action OnHit;
 
@@ -27,7 +30,6 @@ namespace Unity_RPGProject.Controllers
         bool _canChase;
         bool _canAttack = false;
 
-        PatrolPath _patrolPath;
         StateMachine _stateMachine;
         NavMeshAgent _navMeshAgent;
         Transform _player;
@@ -87,7 +89,6 @@ namespace Unity_RPGProject.Controllers
             _mover = new EnemyMover(this);
             _enemyAnimation = new EnemyAnimation(this);
 
-            _patrolPath = GameObject.FindAnyObjectByType<PatrolPath>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
