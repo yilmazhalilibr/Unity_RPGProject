@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Unity_RPGProject.Abstracts.Animations;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Inputs;
@@ -111,6 +112,13 @@ namespace Unity_RPGProject.Controllers
         {
             _onHit = true;
         }
+        // I STAYED THAT METHOD
+        //public async void ControllerHandleAsync(bool state)
+        //{
+        //    enabled = state;
+        //    await Task.Delay(15000);
+        //    enabled = !enabled;
+        //}
 
 
     }
