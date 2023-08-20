@@ -1062,7 +1062,7 @@ PlayableDirector:
   - key: {fileID: -6917551712247153846, guid: 1769d2d04c42be64fb05ca4f8945a2b8, type: 2}
     value: {fileID: 1983121665}
   - key: {fileID: 3120164785871096905, guid: 1769d2d04c42be64fb05ca4f8945a2b8, type: 2}
-    value: {fileID: 1043680926}
+    value: {fileID: 1986306798}
   m_ExposedReferences:
     m_References:
     - 9916ef78b77a2b542817b1d8bbd9b78c: {fileID: 1986306796}
@@ -1341,6 +1341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986306797}
   - component: {fileID: 1986306796}
+  - component: {fileID: 1986306798}
   m_Layer: 0
   m_Name: Virtual Dolly Track 1
   m_TagString: Untagged
@@ -1394,7 +1395,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986306795}
-  m_LocalRotation: {x: 0.2031965, y: -0.41806537, z: 0.09651993, w: 0.880123}
+  m_LocalRotation: {x: 0.26597467, y: 0.37458178, z: -0.113086835, w: 0.88099796}
   m_LocalPosition: {x: -30.57431, y: 2.12, z: 13.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1403,6 +1404,27 @@ Transform:
   m_Father: {fileID: 884440947}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1986306798
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986306795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2060234516
 GameObject:
   m_ObjectHideFlags: 3
@@ -1450,7 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1043680924}
-  m_PathPosition: 1
+  m_PathPosition: 0
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
