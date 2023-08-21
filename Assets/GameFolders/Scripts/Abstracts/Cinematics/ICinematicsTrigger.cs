@@ -6,8 +6,7 @@ namespace Unity_RPGProject.Abstracts.Cinematics
 {
     public interface ICinematicsTrigger
     {
-        event System.Action OnCinematics;
-        bool CinematicWorked { get; }
+        event System.Action OnCinematicsTrigger;
     }
 }
 

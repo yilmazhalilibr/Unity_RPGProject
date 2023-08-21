@@ -21,6 +21,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void LateTick()
         {
+            _playerController.PlayerAnimation.PlayerMoveAnimStop();
         }
 
         public void OnEnter()

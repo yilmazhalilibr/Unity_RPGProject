@@ -112,13 +112,17 @@ namespace Unity_RPGProject.Controllers
         {
             _onHit = true;
         }
-        // I STAYED THAT METHOD
-        //public async void ControllerHandleAsync(bool state)
-        //{
-        //    enabled = state;
-        //    await Task.Delay(15000);
-        //    enabled = !enabled;
-        //}
+
+        public void CinematicHandleOfController(bool state)
+        {
+            enabled = state;
+            NavMeshAgent.Resume();
+            if (state == false)
+            {
+                NavMeshAgent.Stop();
+                NavMeshAgent.velocity = Vector3.zero;
+            }
+        }
 
 
     }

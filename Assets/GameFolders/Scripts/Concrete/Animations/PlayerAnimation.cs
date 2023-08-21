@@ -28,7 +28,10 @@ namespace Unity_RPGProject.Animations
 
             _animator.SetFloat(FORWARD_SPEED, speed);
         }
-
+        public void PlayerMoveAnimStop()
+        {
+            _animator.SetFloat(FORWARD_SPEED, 0f);
+        }
         public void PlayerAttackAnim()
         {
             _animator.SetTrigger(ATTACK);
