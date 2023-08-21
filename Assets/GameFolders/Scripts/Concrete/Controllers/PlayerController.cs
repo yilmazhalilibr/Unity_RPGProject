@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Unity_RPGProject.Abstracts.Animations;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Inputs;
@@ -113,7 +112,8 @@ namespace Unity_RPGProject.Controllers
             _onHit = true;
         }
 
-        public void CinematicHandleOfController(bool state)
+        [System.Obsolete]
+        public void PlayerControllerHandle(bool state)
         {
             enabled = state;
             NavMeshAgent.Resume();

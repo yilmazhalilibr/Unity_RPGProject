@@ -1,4 +1,3 @@
-using System;
 using Unity_RPGProject.Abstracts.Cinematics;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
@@ -13,7 +12,7 @@ namespace Unity_RPGProject.Cinematics
         PlayableDirector _playableDirector;
 
 
-        public event Action OnCinematicsTrigger;
+        public event System.Action OnCinematicsTrigger;
 
         private void Awake()
         {
@@ -34,7 +33,7 @@ namespace Unity_RPGProject.Cinematics
             if (!other.gameObject.TryGetComponent(out _playerController)) return;
             GetComponent<PlayableDirector>().Play();
             OnCinematicsTrigger?.Invoke();// Invoke , will be need to future
-            _playerController.CinematicHandleOfController(false);
+            _playerController.PlayerControllerHandle(false);
         }
         private void OnTriggerExit(Collider other)
         {
@@ -42,7 +41,7 @@ namespace Unity_RPGProject.Cinematics
         }
         private void CinematicsOnStopEvent(PlayableDirector playableDirector)
         {
-            _playerController.CinematicHandleOfController(true);
+            _playerController.PlayerControllerHandle(true);
         }
 
     }
