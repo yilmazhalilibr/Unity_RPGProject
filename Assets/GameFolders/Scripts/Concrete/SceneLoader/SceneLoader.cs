@@ -11,31 +11,36 @@ namespace Unity_RPGProject.Concrete
     public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
     {
         [SerializeField] Image _progressBar;
+        [SerializeField] Canvas _canvas;
 
-
-        private void Awake()
-        {
-            _progressBar = GetComponentInChildren<Image>();
-        }
-
+        bool _first = false;
 
         public async UniTaskVoid SceneLoading(string sceneName)
-        { 
-            AsyncOperation loadingOperationLoad = SceneManager.LoadSceneAsync("Loading");
-            while (loadingOperationLoad.isDone)
-            {
-                AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(sceneName);
+        {
 
-                while (!loadingOperation.isDone)
-                {
-                    _progressBar.fillAmount = loadingOperation.progress;
-                    await UniTask.WaitForEndOfFrame();
-                }
+            _canvas.gameObject.SetActive(true);
+            _progressBar.fillAmount = 0;
+
+            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(sceneName);
+
+            while (!loadingOperation.isDone)
+            {
+                _progressBar.fillAmount = loadingOperation.progress;
+                await UniTask.WaitForEndOfFrame(this);
             }
 
+            _canvas.gameObject.SetActive(false);
 
         }
 
+        private void LateUpdate()
+        {
+            var scene = SceneManager.GetActiveScene();
+            if (scene.name != "First" && _first == true) return;
+            _first = true;
+            SceneLoading("Game");
+
+        }
 
 
     }
