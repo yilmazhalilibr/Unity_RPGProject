@@ -16,11 +16,11 @@ namespace Unity_RPGProject.Concrete
             {
                 case PortalType.FirstVillage:
                     Debug.Log("FirstVillage ");
-                    SceneLoader.Instance.SceneLoading("Game");
+                    SceneLoader.Instance.SceneLoading(1);
                     break;
                 case PortalType.SecondVillage:
                     Debug.Log("SecondVillage ");
-                    SceneLoader.Instance.SceneLoading("Game2");
+                    SceneLoader.Instance.SceneLoading(2);
                     break;
                 default:
                     Debug.Log("Portal Error! No portal type!");

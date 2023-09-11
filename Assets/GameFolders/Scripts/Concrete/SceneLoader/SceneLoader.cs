@@ -18,13 +18,13 @@ namespace Unity_RPGProject.Concrete
         {
             SetSingletonThisGameObject(this);
         }
-        public async UniTaskVoid SceneLoading(string sceneName)
+        public async UniTaskVoid SceneLoading(int scene)
         {
 
             _canvas.gameObject.SetActive(true);
             _progressBar.fillAmount = 0;
 
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(sceneName);
+            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(scene);
 
             while (!loadingOperation.isDone)
             {
@@ -41,7 +41,7 @@ namespace Unity_RPGProject.Concrete
             var scene = SceneManager.GetActiveScene();
             if (scene.name != "First" && _first == true) return;
             _first = true;
-            SceneLoading("Game");
+            SceneLoading(1);
 
         }
 
