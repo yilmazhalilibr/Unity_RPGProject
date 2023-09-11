@@ -14,7 +14,10 @@ namespace Unity_RPGProject.Concrete
         [SerializeField] Canvas _canvas;
 
         bool _first = false;
-
+        private void Awake()
+        {
+            SetSingletonThisGameObject(this);
+        }
         public async UniTaskVoid SceneLoading(string sceneName)
         {
 
