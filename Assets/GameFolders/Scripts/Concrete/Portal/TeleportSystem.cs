@@ -15,11 +15,11 @@ namespace Unity_RPGProject.Concrete
             switch (type)
             {
                 case PortalType.FirstVillage:
-                    Debug.Log("FirstVillage ");
+                    //Debug.Log("FirstVillage ");
                     SceneLoader.Instance.SceneLoading(1);
                     break;
                 case PortalType.SecondVillage:
-                    Debug.Log("SecondVillage ");
+                    //Debug.Log("SecondVillage ");
                     SceneLoader.Instance.SceneLoading(2);
                     break;
                 default:
