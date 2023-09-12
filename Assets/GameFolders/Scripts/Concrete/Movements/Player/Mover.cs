@@ -21,9 +21,9 @@ namespace Unity_RPGProject.Movements
 
             var hit = _playerController.Input.LastHitMouse;
 
-            if (hit.collider.TryGetComponent(out IHealth health)) // This component need will be next time to change with EnemyController.
+            if (hit.collider.TryGetComponent(out EnemyController enemy))
             {
-                _playerController.NavMeshAgent.stoppingDistance = _playerController.Weapon.WeaponRange;
+                _playerController.NavMeshAgent.stoppingDistance = _playerController.WeaponSO.WeaponRange;
                 _playerController.NavMeshAgent.destination = hit.point;
             }
             else

@@ -41,7 +41,7 @@ namespace Unity_RPGProject.States.EnemyStates
         public void OnEnter()
         {
             _enemyController.NavMeshAgent.speed = 3.5f;
-            _enemyController.NavMeshAgent.stoppingDistance = _enemyController.Weapon.WeaponRange;
+            _enemyController.NavMeshAgent.stoppingDistance = _enemyController.WeaponSO.WeaponRange;
         }
 
         public void OnExit()

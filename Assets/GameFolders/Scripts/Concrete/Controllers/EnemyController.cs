@@ -14,7 +14,7 @@ using UnityEngine.AI;
 
 namespace Unity_RPGProject.Controllers
 {
-    public class EnemyController : MonoBehaviour, ISaveable
+    public class EnemyController : BaseController
     {
         [Header("Enemy Chase")]
         [SerializeField] float _chaseDistance = 5f;
@@ -36,19 +36,27 @@ namespace Unity_RPGProject.Controllers
         Transform _player;
 
         IHealth _health;
+
         IHealth _playerHealth;
         IMover _mover;
         IEnemyAnimation _enemyAnimation;
 
 
-        public NavMeshAgent NavMeshAgent => _navMeshAgent;
+        public override NavMeshAgent NavMeshAgent { get { return _navMeshAgent; } set { _navMeshAgent = value; } }
+
+        public override WeaponSO WeaponSO { get { return _weapon; } set { _weapon = value; } }
+        public override StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
+
         public Transform Player => _player;
         public PatrolPath PatrolPath => _patrolPath;
-        public WeaponSO Weapon => _weapon;
+        public Transform PatrolWay { get; set; }
 
-        public IMover Mover => _mover;
+        public override IMover Mover { get { return _mover; } set { _mover = value; } }
+
+
         public IEnemyAnimation EnemyAnimation => _enemyAnimation;
         public IHealth PlayerHealth => _playerHealth;
+
 
         public float ChaseDistance => _chaseDistance;
         public float ChaseTime => _chaseTime;
@@ -78,8 +86,7 @@ namespace Unity_RPGProject.Controllers
             }
         }
 
-        public Transform PatrolWay { get; set; }
-
+        
 
         private void Awake()
         {
@@ -105,7 +112,7 @@ namespace Unity_RPGProject.Controllers
             EnemyAttackState enemyAttackState = new(this);
 
             _stateMachine.AddState(enemyIdleState, enemyPatrolState, () => CanPatrol && !CanAttack && !CanChase);
-            _stateMachine.AddState(enemyPatrolState, enemyIdleState, () => !CanPatrol && NavMeshAgent.velocity == Vector3.zero && Weapon.WeaponRange <= Vector3.Distance(transform.position, Player.transform.position));
+            _stateMachine.AddState(enemyPatrolState, enemyIdleState, () => !CanPatrol && NavMeshAgent.velocity == Vector3.zero && WeaponSO.WeaponRange <= Vector3.Distance(transform.position, Player.transform.position));
             _stateMachine.AddState(enemyChaseState, enemyPatrolState, () => CanPatrol && !CanChase && !CanAttack);
             _stateMachine.AddState(enemyAttackState, enemyPatrolState, () => CanPatrol && !CanAttack && !CanChase);
 
@@ -114,8 +121,6 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.AddAnyState(enemyAttackState, () => CanAttack && !Player.GetComponent<IHealth>().isDead);
 
             _stateMachine.SetState(enemyIdleState);
-
-
 
         }
 
@@ -184,12 +189,12 @@ namespace Unity_RPGProject.Controllers
 
         }
 
-        public object CaptureState()
+        public override object CaptureState()
         {
             return new SerializableVector3(transform.position);
 
         }
-        public void RestoreState(object state)
+        public override void RestoreState(object state)
         {
             SerializableVector3 position = (SerializableVector3)state;
             NavMeshAgent.enabled = false;

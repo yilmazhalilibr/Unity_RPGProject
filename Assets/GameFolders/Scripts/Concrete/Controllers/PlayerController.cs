@@ -16,7 +16,7 @@ using UnityEngine.AI;
 
 namespace Unity_RPGProject.Controllers
 {
-    public class PlayerController : MonoBehaviour, ISaveable
+    public class PlayerController : BaseController
     {
         [Header("Movement")]
         [SerializeField] float _speed;
@@ -34,12 +34,14 @@ namespace Unity_RPGProject.Controllers
         IMover _mover;
         IHealth _health;
 
-        public NavMeshAgent NavMeshAgent => _navMeshAgent;
-        public WeaponSO Weapon => _weaponSO;
+        public override NavMeshAgent NavMeshAgent { get { return _navMeshAgent; } set { _navMeshAgent = value; } }
+        public override WeaponSO WeaponSO { get { return _weaponSO; } set { _weaponSO = value; } }
+        public override StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
         public TargetDetector TargetDetector => _targetDetector;
-        public IMover Mover => _mover;
+
         public IPlayerAnimation PlayerAnimation => _playerAnimator;
         public IInputReader Input => _input;
+        public override IMover Mover { get { return _mover; } set { _mover = value; } }
 
         public bool CanMove => Input.OnMouseLeftClick || _navMeshAgent.velocity != Vector3.zero;
         public bool CanAttack
@@ -49,7 +51,7 @@ namespace Unity_RPGProject.Controllers
                 return
                     _navMeshAgent.velocity == Vector3.zero &&
                     _targetDetector.CurrentTargetType == Enums.Targets.Enemy &&
-                    Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= Weapon.WeaponRange &&
+                    Vector3.Distance(transform.position, TargetDetector.CurrentTargetTransform.position) <= WeaponSO.WeaponRange &&
                     !TargetDetector.CurrentTargetTransform.GetComponent<IHealth>().isDead;
             }
             set
@@ -58,6 +60,8 @@ namespace Unity_RPGProject.Controllers
             }
         }
         public bool OnHitInfo { get { return _onHit; } set { _onHit = value; } }
+
+       
 
         private void Awake()
         {
@@ -125,11 +129,11 @@ namespace Unity_RPGProject.Controllers
             }
         }
 
-        public object CaptureState()
+        public override object CaptureState()
         {
             return new SerializableVector3(transform.position);
         }
-        public void RestoreState(object state)
+        public override void RestoreState(object state)
         {
             SerializableVector3 position = (SerializableVector3)state;
             NavMeshAgent.enabled = false;

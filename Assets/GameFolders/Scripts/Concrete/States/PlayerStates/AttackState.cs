@@ -14,7 +14,7 @@ namespace Unity_RPGProject.States.PlayerStates
     {
         PlayerController _playerController;
 
-        public WeaponSO Weapon => _playerController.Weapon;
+        public WeaponSO Weapon => _playerController.WeaponSO;
 
         public AttackState(PlayerController playerController)
         {

@@ -24,7 +24,7 @@ namespace Unity_RPGProject.States.EnemyStates
         {
             Debug.Log("Attack State Tick");
 
-            if (_enemyController.PlayerAndEnemyDistance() > _enemyController.Weapon.WeaponRange)
+            if (_enemyController.PlayerAndEnemyDistance() > _enemyController.WeaponSO.WeaponRange)
             {
                 _enemyController.StatesChangeHandle(true, "CanChase");
             }
@@ -59,7 +59,7 @@ namespace Unity_RPGProject.States.EnemyStates
             }
             else if (_enemyController.CanAttack)
             {
-                _enemyController.PlayerHealth.TakeDamage(_enemyController.Weapon.WeaponDamage);
+                _enemyController.PlayerHealth.TakeDamage(_enemyController.WeaponSO.WeaponDamage);
             }
             else
             {
