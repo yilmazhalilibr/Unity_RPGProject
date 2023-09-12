@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chaseDistance: 5
+  _chaseTime: 5
+  _weapon: {fileID: 0}
+  _patrolPath: {fileID: 0}
 --- !u!4 &5777082421535778012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}

@@ -16,7 +16,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void FixedTick()
         {
-            Debug.Log("Idle State Tick");
         }
 
         public void LateTick()

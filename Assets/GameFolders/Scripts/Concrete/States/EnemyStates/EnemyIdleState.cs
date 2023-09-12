@@ -33,7 +33,6 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void LateTick()
         {
-            Debug.Log("EnemyIdleState Tick");
         }
 
         public void OnEnter()

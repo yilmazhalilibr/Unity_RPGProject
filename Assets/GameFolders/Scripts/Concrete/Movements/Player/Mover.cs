@@ -1,8 +1,7 @@
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Movements;
-using Unity_RPGProject.Combats;
+using Unity_RPGProject.Concrete;
 using Unity_RPGProject.Controllers;
-using Unity_RPGProject.Utilities.Raycast;
 using UnityEngine;
 
 namespace Unity_RPGProject.Movements
@@ -39,6 +38,7 @@ namespace Unity_RPGProject.Movements
         {
             return false;
         }
+    
     }
 }
 

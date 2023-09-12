@@ -1,4 +1,5 @@
 using Unity_RPGProject.Abstracts.Movements;
+using Unity_RPGProject.Concrete;
 using Unity_RPGProject.Controllers;
 using UnityEngine;
 
@@ -12,7 +13,6 @@ namespace Unity_RPGProject.Movements.Enemy
         public EnemyMover(EnemyController enemyController)
         {
             _enemyController = enemyController;
-
         }
 
         public bool Move()
@@ -30,6 +30,7 @@ namespace Unity_RPGProject.Movements.Enemy
 
             return false;
         }
+        
     }
 }
 

@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using Unity_RPGProject.Helpers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace RPG.Saving
+namespace Unity_RPGProject.Concrete
 {
-    public class SavingSystem : MonoBehaviour
+    public class SavingSystem : SingletonMonoBehaviour<SavingSystem>
     {
+        private void Awake()
+        {
+            SetSingletonThisGameObject(this);
+        }
         public IEnumerator LoadLastScene(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);

@@ -3,6 +3,7 @@ using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Animations;
 using Unity_RPGProject.Combats;
+using Unity_RPGProject.Concrete;
 using Unity_RPGProject.Movements.Enemy;
 using Unity_RPGProject.PatrolPaths;
 using Unity_RPGProject.ScriptableObjects;
@@ -13,7 +14,7 @@ using UnityEngine.AI;
 
 namespace Unity_RPGProject.Controllers
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, ISaveable
     {
         [Header("Enemy Chase")]
         [SerializeField] float _chaseDistance = 5f;
@@ -183,7 +184,19 @@ namespace Unity_RPGProject.Controllers
 
         }
 
+        public object CaptureState()
+        {
+            return new SerializableVector3(transform.position);
 
+        }
+        public void RestoreState(object state)
+        {
+            SerializableVector3 position = (SerializableVector3)state;
+            NavMeshAgent.enabled = false;
+            transform.position = position.ToVector();
+            NavMeshAgent.enabled = true;
+
+        }
 
     }
 }

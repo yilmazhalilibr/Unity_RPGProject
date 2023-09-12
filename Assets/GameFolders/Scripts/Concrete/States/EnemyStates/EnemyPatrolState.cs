@@ -20,8 +20,6 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void FixedTick()
         {
-            Debug.Log("EnemyPatrolState Tick");
-
             _enemyController.CanChase = _enemyController.PlayerHealth.isDead ? false : _enemyController.IsChase();
             PatrolHandle();
             _enemyController.Mover.Move();
