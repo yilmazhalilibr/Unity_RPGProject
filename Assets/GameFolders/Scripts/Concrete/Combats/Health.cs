@@ -1,11 +1,12 @@
 using Unity.Collections;
 using Unity_RPGProject.Abstracts.Combats;
+using Unity_RPGProject.Concrete;
 using Unity_RPGProject.ScriptableObjects;
 using UnityEngine;
 
 namespace Unity_RPGProject.Combats
 {
-    public class Health : MonoBehaviour, IHealth
+    public class Health : MonoBehaviour, IHealth, ISaveable
     {
         [SerializeField] HealthSO _healthInfo;
 
@@ -30,16 +31,22 @@ namespace Unity_RPGProject.Combats
 
             OnTakeHit?.Invoke(_currentHealth, _healthInfo.MaxHealth);
 
-            if (isDead) 
+            if (isDead)
             {
                 OnDead?.Invoke();
             }
 
 
         }
+        public object CaptureState()
+        {
+            return _currentHealth;
+        }
 
-
-
+        public void RestoreState(object state)
+        {
+            _currentHealth = (float)state;
+        }
     }
 }
 
