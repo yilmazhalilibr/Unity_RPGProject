@@ -25,12 +25,12 @@ namespace Unity_RPGProject.Concrete
             }
         }
 
-        private void Save()
+        public void Save()
         {
             SavingSystem.Instance.Save(defaultSaveFile);
         }
 
-        private void Load()
+        public void Load()
         {
             Debug.Log("Loading");
             SavingSystem.Instance.Load(defaultSaveFile);

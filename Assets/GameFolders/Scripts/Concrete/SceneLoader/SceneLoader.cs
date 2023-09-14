@@ -41,7 +41,7 @@ namespace Unity_RPGProject.Concrete
             var scene = SceneManager.GetActiveScene();
             if (scene.name != "First" && _first == true) return;
             _first = true;
-            SceneLoading(1);
+            _ = SceneLoading(1);
 
         }
 

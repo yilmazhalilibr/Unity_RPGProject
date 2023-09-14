@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity_RPGProject.Controllers;
@@ -20,7 +21,16 @@ namespace Unity_RPGProject.Concrete.Controllers
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out PlayerController player)) return;
+            _ = SaveAsync();
+
+        }
+
+        private async UniTaskVoid SaveAsync()
+        {
+            SavingWrapper.Instance.Save();
+            await UniTask.Delay(100);
             _teleportSystem.TeleportVillage(_travelTo);
+
         }
 
 
