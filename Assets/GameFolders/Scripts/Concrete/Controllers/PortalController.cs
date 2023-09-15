@@ -10,6 +10,7 @@ namespace Unity_RPGProject.Concrete.Controllers
     public class PortalController : MonoBehaviour
     {
         [SerializeField] PortalType _travelTo;
+
         TeleportSystem _teleportSystem;
 
 
@@ -21,17 +22,18 @@ namespace Unity_RPGProject.Concrete.Controllers
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out PlayerController player)) return;
-            _ = SaveAsync();
-
+            _ = SaveAndLoadAsync();
         }
 
-        private async UniTaskVoid SaveAsync()
+        private async UniTaskVoid SaveAndLoadAsync()
         {
             SavingWrapper.Instance.Save();
             await UniTask.Delay(100);
             _teleportSystem.TeleportVillage(_travelTo);
+            SavingWrapper.Instance.Load();
 
         }
+
 
 
     }

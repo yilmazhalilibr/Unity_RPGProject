@@ -37,7 +37,7 @@ namespace Unity_RPGProject.States.EnemyStates
 
         public void OnEnter()
         {
-            _idleTime = Random.Range(0, 5f);
+            _idleTime = Random.Range(0, 3f);
         }
 
         public void OnExit()
