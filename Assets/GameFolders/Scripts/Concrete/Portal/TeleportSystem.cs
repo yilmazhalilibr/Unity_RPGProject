@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity_RPGProject.Concrete.Controllers;
@@ -10,15 +11,15 @@ namespace Unity_RPGProject.Concrete
     public class TeleportSystem
     {
 
-        public void TeleportVillage(PortalType type)
+        public async UniTask TeleportVillage(PortalType type)
         {
             switch (type)
             {
                 case PortalType.FirstVillage:
-                    _ = SceneLoader.Instance.SceneLoading(1);
+                    await SceneLoader.Instance.SceneLoading(1);
                     break;
                 case PortalType.SecondVillage:
-                    _ = SceneLoader.Instance.SceneLoading(2);
+                    await SceneLoader.Instance.SceneLoading(2);
                     break;
                 default:
                     Debug.Log("Portal Error! No portal type!");

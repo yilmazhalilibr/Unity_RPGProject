@@ -131,7 +131,8 @@ namespace Unity_RPGProject.Controllers
 
         public override object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            Debug.Log(transform.localPosition);
+            return new SerializableVector3(transform.localPosition);
 
         }
         public override void RestoreState(object state)

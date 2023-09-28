@@ -18,7 +18,7 @@ namespace Unity_RPGProject.Concrete
         {
             SetSingletonThisGameObject(this);
         }
-        public async UniTaskVoid SceneLoading(int scene)
+        public async UniTask SceneLoading(int scene)
         {
 
             _canvas.gameObject.SetActive(true);

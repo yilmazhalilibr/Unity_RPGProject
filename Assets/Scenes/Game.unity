@@ -166,6 +166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneCore
       objectReference: {fileID: 0}
+    - target: {fileID: 2677775913486940426, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
+      propertyPath: _spawnPoint
+      value: 
+      objectReference: {fileID: 5545425809703253848}
     - target: {fileID: 3702009910052178920, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -230,13 +234,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.22197752
       objectReference: {fileID: 0}
+    - target: {fileID: 6282117071940258338, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
+      propertyPath: m_TagString
+      value: SpawnPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 6897866001445940439, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.059359297
+      value: 0.059359293
       objectReference: {fileID: 0}
     - target: {fileID: 6897866001445940439, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7863405
+      value: -0.78634053
       objectReference: {fileID: 0}
     - target: {fileID: 7115513111648079736, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -264,6 +272,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
+--- !u!4 &5545425809703253848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 637977625645455275, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
+  m_PrefabInstance: {fileID: 5545425809703253847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8019020758215124905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 3448081928087938033, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701614420741840316, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
+      propertyPath: uniqueIdentifier
+      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 5102571849656819306, guid: 1f5347b3300b4b04fb2beff8a8f42074, type: 3}
       propertyPath: m_RootOrder

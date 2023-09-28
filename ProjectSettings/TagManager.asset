@@ -9,6 +9,7 @@ TagManager:
   - ship
   - asteroid
   - NavmeshWall
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

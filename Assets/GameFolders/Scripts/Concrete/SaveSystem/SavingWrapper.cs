@@ -39,8 +39,6 @@ namespace Unity_RPGProject.Concrete
             _player.NavMeshAgent.enabled = true;
         }
 
-      
-
         public void Load()
         {
             PlayerControllerNullCheck();
@@ -48,7 +46,7 @@ namespace Unity_RPGProject.Concrete
             Debug.Log("Loading");
             _player.NavMeshAgent.enabled = false;
             SavingSystem.Instance.Load(defaultSaveFile);
-            UniTask.Delay(150);
+            UniTask.Delay(1000);
             _player.NavMeshAgent.enabled = true;
 
         }
