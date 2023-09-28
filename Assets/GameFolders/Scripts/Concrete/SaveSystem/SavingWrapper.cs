@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using Unity_RPGProject.Concrete.Controllers;
 using Unity_RPGProject.Controllers;
 using Unity_RPGProject.Helpers;
 using UnityEngine;
@@ -35,19 +36,17 @@ namespace Unity_RPGProject.Concrete
             PlayerControllerNullCheck();
             _player.NavMeshAgent.enabled = false;
             SavingSystem.Instance.Save(defaultSaveFile);
-            UniTask.Delay(150);
             _player.NavMeshAgent.enabled = true;
         }
+
+
 
         public void Load()
         {
             PlayerControllerNullCheck();
-
             Debug.Log("Loading");
-            _player.NavMeshAgent.enabled = false;
             SavingSystem.Instance.Load(defaultSaveFile);
-            UniTask.Delay(1000);
-            _player.NavMeshAgent.enabled = true;
+            UpdatePlayer();
 
         }
 
@@ -60,6 +59,15 @@ namespace Unity_RPGProject.Concrete
 
 
         }
+        private void UpdatePlayer()
+        {
+            _player.NavMeshAgent.enabled = false;
+            var portal = FindObjectOfType<PortalController>();
+            _player.transform.position = portal.SpawnPoint.transform.position;
+            _player.NavMeshAgent.enabled = true;
+
+        }
+
     }
 }
 
