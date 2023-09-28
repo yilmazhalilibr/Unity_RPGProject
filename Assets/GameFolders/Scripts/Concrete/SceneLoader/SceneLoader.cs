@@ -17,10 +17,6 @@ namespace Unity_RPGProject.Concrete
         {
             SetSingletonThisGameObject(this);
         }
-        private void Start()
-        {
-            _ = SceneLoading(1);
-        }
         public async UniTask SceneLoading(int scene)
         {
 
