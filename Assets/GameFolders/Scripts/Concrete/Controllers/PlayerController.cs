@@ -61,7 +61,7 @@ namespace Unity_RPGProject.Controllers
         }
         public bool OnHitInfo { get { return _onHit; } set { _onHit = value; } }
 
-       
+
 
         private void Awake()
         {
@@ -128,18 +128,25 @@ namespace Unity_RPGProject.Controllers
                 NavMeshAgent.velocity = Vector3.zero;
             }
         }
+        struct PlayerControllerSaveData
+        {
+            public SerializableVector3 Position;
+            public SerializableVector3 Rotation;
 
+        }
         public override object CaptureState()
         {
-            Debug.Log(transform.localPosition);
-            return new SerializableVector3(transform.localPosition);
-
+            PlayerControllerSaveData data = new PlayerControllerSaveData();
+            data.Position = new SerializableVector3(transform.position);
+            data.Rotation = new SerializableVector3(transform.eulerAngles);
+            return data;
         }
         public override void RestoreState(object state)
         {
-            SerializableVector3 position = (SerializableVector3)state;
+            PlayerControllerSaveData data = (PlayerControllerSaveData)state;
             NavMeshAgent.enabled = false;
-            transform.position = position.ToVector();
+            transform.position = data.Position.ToVector();
+            transform.eulerAngles = data.Rotation.ToVector();
             NavMeshAgent.enabled = true;
 
         }
