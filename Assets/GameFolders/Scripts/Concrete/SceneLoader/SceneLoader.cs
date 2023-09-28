@@ -13,7 +13,6 @@ namespace Unity_RPGProject.Concrete
         [SerializeField] Image _progressBar;
         [SerializeField] Canvas _canvas;
 
-        bool _first = false;
         private void Awake()
         {
             SetSingletonThisGameObject(this);
@@ -35,16 +34,6 @@ namespace Unity_RPGProject.Concrete
             _canvas.gameObject.SetActive(false);
 
         }
-
-        private void LateUpdate()
-        {
-            var scene = SceneManager.GetActiveScene();
-            if (scene.name != "First" && _first == true) return;
-            _first = true;
-            _ = SceneLoading(1);
-
-        }
-
 
     }
 }
