@@ -18,6 +18,10 @@ namespace Unity_RPGProject.Concrete
             SetSingletonThisGameObject(this);
 
         }
+        private void Start()
+        {
+            _ = StartLoad();
+        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -29,6 +33,10 @@ namespace Unity_RPGProject.Concrete
             {
                 Save();
             }
+        }
+        public async UniTask StartLoad()
+        {
+            await SavingSystem.Instance.LoadLastScene(defaultSaveFile);
         }
 
         public void Save()

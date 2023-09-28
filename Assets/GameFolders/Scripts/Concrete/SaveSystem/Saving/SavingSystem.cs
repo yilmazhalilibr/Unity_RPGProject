@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,19 @@ namespace Unity_RPGProject.Concrete
         {
             SetSingletonThisGameObject(this);
         }
-        public IEnumerator LoadLastScene(string saveFile)
+        //OBSOLET
+        //public IEnumerator LoadLastScene(string saveFile)
+        //{
+        //    Dictionary<string, object> state = LoadFile(saveFile);
+        //    int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        //    if (state.ContainsKey("lastSceneBuildIndex"))
+        //    {
+        //        buildIndex = (int)state["lastSceneBuildIndex"];
+        //    }
+        //    yield return SceneManager.LoadSceneAsync(buildIndex);
+        //    RestoreState(state);
+        //}
+        public async UniTask LoadLastScene(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
             int buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -24,10 +37,9 @@ namespace Unity_RPGProject.Concrete
             {
                 buildIndex = (int)state["lastSceneBuildIndex"];
             }
-            yield return SceneManager.LoadSceneAsync(buildIndex);
+            await SceneManager.LoadSceneAsync(buildIndex);
             RestoreState(state);
         }
-
         public void Save(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
