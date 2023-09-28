@@ -17,6 +17,10 @@ namespace Unity_RPGProject.Concrete
         {
             SetSingletonThisGameObject(this);
         }
+        private void Start()
+        {
+            _ = SceneLoading(1);
+        }
         public async UniTask SceneLoading(int scene)
         {
 
@@ -30,10 +34,9 @@ namespace Unity_RPGProject.Concrete
                 _progressBar.fillAmount = loadingOperation.progress;
                 await UniTask.WaitForEndOfFrame(this);
             }
-
             _canvas.gameObject.SetActive(false);
-
         }
+
 
     }
 }
