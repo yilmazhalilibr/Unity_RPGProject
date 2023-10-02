@@ -22,8 +22,10 @@ namespace Unity_RPGProject.Concrete.Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent(out PlayerController player)) return;
-            _ = SaveAndLoadAsync();
+            if (other.TryGetComponent(out PlayerController player))
+            {
+                _ = SaveAndLoadAsync();
+            }
         }
 
         private async UniTaskVoid SaveAndLoadAsync()

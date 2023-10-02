@@ -37,7 +37,7 @@ namespace Unity_RPGProject.Concrete
             {
                 buildIndex = (int)state["lastSceneBuildIndex"];
             }
-            await SceneManager.LoadSceneAsync(buildIndex);
+            SceneLoader.Instance.SavedLevelIndex = buildIndex;
             RestoreState(state);
         }
         public void Save(string saveFile)

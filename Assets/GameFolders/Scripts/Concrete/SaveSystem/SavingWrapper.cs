@@ -6,6 +6,7 @@ using Unity_RPGProject.Controllers;
 using Unity_RPGProject.Helpers;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace Unity_RPGProject.Concrete
 {
@@ -16,12 +17,8 @@ namespace Unity_RPGProject.Concrete
         private void Awake()
         {
             SetSingletonThisGameObject(this);
+        }
 
-        }
-        private void Start()
-        {
-            _ = StartLoad();
-        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -33,12 +30,16 @@ namespace Unity_RPGProject.Concrete
             {
                 Save();
             }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                _ = LoadLastScene();
+            }
         }
-        public async UniTask StartLoad()
+        public async UniTaskVoid LoadLastScene()
         {
             await SavingSystem.Instance.LoadLastScene(defaultSaveFile);
+            await SceneManager.LoadSceneAsync(defaultSaveFile);
         }
-
         public void Save()
         {
             PlayerControllerNullCheck();
@@ -54,7 +55,7 @@ namespace Unity_RPGProject.Concrete
             PlayerControllerNullCheck();
             Debug.Log("Loading");
             SavingSystem.Instance.Load(defaultSaveFile);
-            UpdatePlayer();
+            UpdatePlayerTransform();
 
         }
 
@@ -67,7 +68,7 @@ namespace Unity_RPGProject.Concrete
 
 
         }
-        private void UpdatePlayer()
+        private void UpdatePlayerTransform()
         {
             _player.NavMeshAgent.enabled = false;
             var portal = FindObjectOfType<PortalController>();

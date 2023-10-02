@@ -13,13 +13,15 @@ namespace Unity_RPGProject.Concrete
         [SerializeField] Image _progressBar;
         [SerializeField] Canvas _canvas;
 
+        public int SavedLevelIndex { get; set; }
         private void Awake()
         {
             SetSingletonThisGameObject(this);
         }
         private void Start()
         {
-            _ = SceneLoading(1);
+            var index = SavedLevelIndex == 0 ? 1 : SavedLevelIndex;
+            _ = SceneLoading(index);
         }
         public async UniTask SceneLoading(int scene)
         {
