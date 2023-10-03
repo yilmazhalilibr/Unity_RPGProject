@@ -18,7 +18,7 @@ namespace Unity_RPGProject.Concrete
             SetSingletonThisGameObject(this);
         }
         //OBSOLET
-        //public IEnumerator LoadLastScene(string saveFile)
+        //public IEnumerator LoadLastSceneSave(string saveFile)
         //{
         //    Dictionary<string, object> state = LoadFile(saveFile);
         //    int buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -29,7 +29,7 @@ namespace Unity_RPGProject.Concrete
         //    yield return SceneManager.LoadSceneAsync(buildIndex);
         //    RestoreState(state);
         //}
-        public async UniTask LoadLastScene(string saveFile)
+        public async UniTask LoadLastSceneSave(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
             int buildIndex = SceneManager.GetActiveScene().buildIndex;

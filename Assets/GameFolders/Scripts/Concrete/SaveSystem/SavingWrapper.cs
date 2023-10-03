@@ -37,8 +37,8 @@ namespace Unity_RPGProject.Concrete
         }
         public async UniTaskVoid LoadLastScene()
         {
-            await SavingSystem.Instance.LoadLastScene(defaultSaveFile);
-            await SceneManager.LoadSceneAsync(defaultSaveFile);
+            await SavingSystem.Instance.LoadLastSceneSave(defaultSaveFile);
+            await SceneLoader.Instance.SceneLoading(SceneLoader.Instance.SavedLevelIndex);
         }
         public void Save()
         {

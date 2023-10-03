@@ -13,7 +13,9 @@ namespace Unity_RPGProject.Concrete
         [SerializeField] Image _progressBar;
         [SerializeField] Canvas _canvas;
 
-        public int SavedLevelIndex { get; set; }
+        public int SavedLevelIndex { get { return _savedLevelIndex; } set { _savedLevelIndex = value; } }
+
+        private int _savedLevelIndex = 1;
         private void Awake()
         {
             SetSingletonThisGameObject(this);
@@ -23,7 +25,7 @@ namespace Unity_RPGProject.Concrete
             var index = SavedLevelIndex == 0 ? 1 : SavedLevelIndex;
             _ = SceneLoading(index);
         }
-        public async UniTask SceneLoading(int scene)
+        public async UniTask SceneLoading(int scene = 1)
         {
 
             _canvas.gameObject.SetActive(true);
