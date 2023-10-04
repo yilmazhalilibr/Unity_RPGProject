@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 1983121665}
     - target: {fileID: 5522842616454733941, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.63725364
+      value: 0.6372537
       objectReference: {fileID: 0}
     - target: {fileID: 5522842616454733941, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.x
@@ -232,11 +232,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897866001445940439, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.059359293
+      value: 0.059359297
       objectReference: {fileID: 0}
     - target: {fileID: 6897866001445940439, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.78634053
+      value: -0.7863405
       objectReference: {fileID: 0}
     - target: {fileID: 7115513111648079736, guid: 61ae009050dcaa048b66057af9fc6b13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -319,10 +319,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5056652496780388184, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
+      propertyPath: near clip plane
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8850457758004074194, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 112179583}
+    - target: {fileID: 8850457758004074194, guid: e8b412ee17102844b8c5742e59ee76f1, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
