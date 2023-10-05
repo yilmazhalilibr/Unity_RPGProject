@@ -7,7 +7,9 @@ namespace Unity_RPGProject.Animations
 {
     public class PlayerAnimation : IPlayerAnimation
     {
+
         PlayerController _playerController;
+
         Animator _animator;
 
         Vector3 _localVelocity;
@@ -15,6 +17,8 @@ namespace Unity_RPGProject.Animations
         public static string ATTACK = "attack";
         public static string ATTACK_STOP = "stopAttack";
         public static string FORWARD_SPEED = "forwardSpeed";
+
+        public Animator PlayerAnimator { get { return _animator; } set { _animator = value; } }
         public PlayerAnimation(PlayerController playerController)
         {
             _playerController = playerController;

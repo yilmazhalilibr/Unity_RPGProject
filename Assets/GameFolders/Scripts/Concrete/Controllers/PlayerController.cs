@@ -30,7 +30,7 @@ namespace Unity_RPGProject.Controllers
         TargetDetector _targetDetector;
 
         IInputReader _input;
-        IPlayerAnimation _playerAnimator;
+        IPlayerAnimation _playerAnimation;
         IMover _mover;
         IHealth _health;
 
@@ -39,7 +39,7 @@ namespace Unity_RPGProject.Controllers
         public override StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
         public TargetDetector TargetDetector => _targetDetector;
 
-        public IPlayerAnimation PlayerAnimation => _playerAnimator;
+        public IPlayerAnimation PlayerAnimation => _playerAnimation;
         public IInputReader Input => _input;
         public override IMover Mover { get { return _mover; } set { _mover = value; } }
 
@@ -61,7 +61,7 @@ namespace Unity_RPGProject.Controllers
         }
         public bool OnHitInfo { get { return _onHit; } set { _onHit = value; } }
 
-       
+
 
         private void Awake()
         {
@@ -69,7 +69,7 @@ namespace Unity_RPGProject.Controllers
             _health = GetComponent<Health>();
 
             _input = new InputReader(this);
-            _playerAnimator = new PlayerAnimation(this);
+            _playerAnimation = new PlayerAnimation(this);
             _stateMachine = new StateMachine();
             _mover = new Mover(this);
             _targetDetector = new TargetDetector(this);
@@ -79,6 +79,7 @@ namespace Unity_RPGProject.Controllers
         private void Start()
         {
             _navMeshAgent.speed = _speed;
+            _playerAnimation.PlayerAnimator.runtimeAnimatorController = WeaponSO.AnimatorOverride;
 
             IdleState idleState = new(this);
             MoveState moveState = new(this);
@@ -111,7 +112,7 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.LateTick();
         }
 
-        //Animation Event's method.
+        //Animation Event's method.(OnHit)
         public void OnHit()
         {
             _onHit = true;
