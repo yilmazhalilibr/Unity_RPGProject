@@ -5,6 +5,7 @@ using Unity_RPGProject.Abstracts.Movements;
 using Unity_RPGProject.Animations;
 using Unity_RPGProject.Combats;
 using Unity_RPGProject.Concrete;
+using Unity_RPGProject.Concrete.Controllers;
 using Unity_RPGProject.Inputs;
 using Unity_RPGProject.Interacts;
 using Unity_RPGProject.Movements;
@@ -32,12 +33,15 @@ namespace Unity_RPGProject.Controllers
         NavMeshAgent _navMeshAgent;
         StateMachine _stateMachine;
         TargetDetector _targetDetector;
+        EquipmentController _equipmentController;
 
         IInputReader _input;
         IPlayerAnimation _playerAnimation;
         IMover _mover;
         IHealth _health;
 
+        public GameObject LeftHand { get { return _leftHand; } set { _leftHand = value; } }
+        public GameObject RightHand { get { return _rightHand; } set { _rightHand = value; } }
         public override NavMeshAgent NavMeshAgent { get { return _navMeshAgent; } set { _navMeshAgent = value; } }
         public override WeaponSO WeaponSO { get { return _weaponSO; } set { _weaponSO = value; } }
         public override StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
@@ -72,6 +76,7 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
+            _equipmentController = new EquipmentController(this);
             _input = new InputReader(this);
             _playerAnimation = new PlayerAnimation(this);
             _stateMachine = new StateMachine();
@@ -84,7 +89,6 @@ namespace Unity_RPGProject.Controllers
         {
             _navMeshAgent.speed = _speed;
             _playerAnimation.PlayerAnimator.runtimeAnimatorController = WeaponSO.AnimatorOverride;
-
 
             IdleState idleState = new(this);
             MoveState moveState = new(this);
@@ -100,6 +104,9 @@ namespace Unity_RPGProject.Controllers
             _stateMachine.AddAnyState(attackState, () => CanAttack && !TargetDetector.CurrentTargetTransform.GetComponent<IHealth>().isDead);
 
             _stateMachine.SetState(idleState);
+
+
+            _equipmentController.UseEquipment();
         }
 
         private void Update()
