@@ -6,6 +6,7 @@ using Unity_RPGProject.Animations;
 using Unity_RPGProject.Combats;
 using Unity_RPGProject.Concrete;
 using Unity_RPGProject.Concrete.Controllers;
+using Unity_RPGProject.Concrete.ProjectilePool;
 using Unity_RPGProject.Inputs;
 using Unity_RPGProject.Interacts;
 using Unity_RPGProject.Movements;
@@ -34,6 +35,7 @@ namespace Unity_RPGProject.Controllers
         StateMachine _stateMachine;
         TargetDetector _targetDetector;
         EquipmentController _equipmentController;
+        public ProjectileFire ProjectileFire;
 
         IInputReader _input;
         IPlayerAnimation _playerAnimation;
@@ -76,6 +78,7 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
+            ProjectileFire = new ProjectileFire(this);
             _equipmentController = new EquipmentController(this);
             _input = new InputReader(this);
             _playerAnimation = new PlayerAnimation(this);

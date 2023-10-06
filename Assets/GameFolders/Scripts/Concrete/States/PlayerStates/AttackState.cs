@@ -23,6 +23,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void OnEnter()
         {
+            _ = _playerController.ProjectileFire.Tick();
         }
 
         public void OnExit()
