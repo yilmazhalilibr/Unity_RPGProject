@@ -22,6 +22,10 @@ namespace Unity_RPGProject.Controllers
         [SerializeField] float _speed;
         [Header("Combat")]
         [SerializeField] WeaponSO _weaponSO;
+        [Header("Hands")]
+        [SerializeField] GameObject _leftHand;
+        [SerializeField] GameObject _rightHand;
+
 
         bool _onHit = false;
 
@@ -80,6 +84,7 @@ namespace Unity_RPGProject.Controllers
         {
             _navMeshAgent.speed = _speed;
             _playerAnimation.PlayerAnimator.runtimeAnimatorController = WeaponSO.AnimatorOverride;
+
 
             IdleState idleState = new(this);
             MoveState moveState = new(this);

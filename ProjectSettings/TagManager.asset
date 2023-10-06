@@ -10,6 +10,12 @@ TagManager:
   - asteroid
   - NavmeshWall
   - SpawnPoint
+  - Sword
+  - Bow
+  - Club
+  - Spear
+  - HandLeft
+  - HandRight
   layers:
   - Default
   - TransparentFX
