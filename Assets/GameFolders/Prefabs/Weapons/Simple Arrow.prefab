@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4750687242688692}
   - component: {fileID: 33269337043308202}
   - component: {fileID: 23830724189926304}
-  - component: {fileID: 8943291123777488585}
   m_Layer: 0
   m_Name: Simple Arrow
   m_TagString: Untagged
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8943291123777488585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659504181823486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6036d0721224b48a37df47e762022e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _arrowCount: 5

@@ -9,18 +9,14 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
     {
         [SerializeField] Queue<GameObject> _arrows = new Queue<GameObject>();
         [SerializeField] int _arrowCount = 5;
-        GameObject _arrowPrefab;
+        [SerializeField] GameObject _arrowPrefab;
 
-        private void Start()
-        {
-            _arrowPrefab = gameObject;
-        }
 
         public void ArrowPoolInitialize()
         {
             for (int i = 0; i < _arrowCount; i++)
             {
-                var arrow = Instantiate(_arrowPrefab);
+                var arrow = Instantiate(_arrowPrefab, this.gameObject.transform);
                 arrow.SetActive(false);
                 _arrows.Enqueue(arrow);
             }
