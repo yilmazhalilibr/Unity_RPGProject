@@ -17,7 +17,7 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
         {
             _playerController = playerController;
             _projectile = new Projectile();
-            _projectile.ArrowPoolInitialize();
+           // _projectile.ArrowPoolInitialize();
         }
 
         public async UniTaskVoid Tick()
