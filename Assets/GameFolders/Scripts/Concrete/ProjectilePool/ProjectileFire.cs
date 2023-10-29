@@ -11,7 +11,7 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
         PlayerController _playerController;
         Projectile _projectile;
 
-        float _lerpSpeed = 2f;
+        float _lerpSpeed = 0.1f;
         float _elapseTime = 0f;
 
         public ProjectileFire(PlayerController playerController)
@@ -34,7 +34,7 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
                 projectile.transform.LookAt(_playerController.TargetDetector.CurrentTargetTransform);
                 projectile.transform.position = Vector3.Lerp(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position, t);
 
-                if (Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position) < 0.1f)
+                if (Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) < 0.1f)
                 {
                     _projectile.ArrowCompleted(projectile);
                     break;
