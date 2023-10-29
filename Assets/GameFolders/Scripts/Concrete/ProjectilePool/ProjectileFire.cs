@@ -9,38 +9,39 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
     public class ProjectileFire
     {
         PlayerController _playerController;
-
-        float _movementDuration = 1f;
-        float _elapseTime = 0f;
         Projectile _projectile;
+
+        float _lerpSpeed = 2f;
+        float _elapseTime = 0f;
+
         public ProjectileFire(PlayerController playerController)
         {
             _playerController = playerController;
-            _projectile = new Projectile();
-           // _projectile.ArrowPoolInitialize();
+            _projectile = _playerController.ProjectTile;
+
+            _projectile.ArrowPoolInitialize();
         }
 
-        public async UniTaskVoid Tick()
+        public void FireTheTarget()
         {
-            while (true)
-            {
-                await UniTask.Delay(25);
-                _elapseTime += Time.deltaTime;
+            var projectile = _projectile.GetArrowObject();
 
-                if (_elapseTime < _movementDuration)
+            while (projectile != null)
+            {
+                _elapseTime = Time.deltaTime * _lerpSpeed;
+                float t = Mathf.Clamp01(_elapseTime);
+
+                projectile.transform.LookAt(_playerController.TargetDetector.CurrentTargetTransform);
+                projectile.transform.position = Vector3.Lerp(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position, t);
+
+                if (Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position) < 0.1f)
                 {
-                    float t = _elapseTime / _movementDuration;
-                    _projectile.GetArrowObject().transform.position = Vector3.Lerp(_playerController.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position, t);
-                }
-                else
-                {
+                    _projectile.ArrowCompleted(projectile);
                     break;
                 }
             }
 
         }
-
-
 
 
 

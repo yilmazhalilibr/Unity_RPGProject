@@ -23,7 +23,6 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void OnEnter()
         {
-            //_ = _playerController.ProjectileFire.Tick();
         }
 
         public void OnExit()
@@ -33,7 +32,7 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public void Tick()
         {
-            Debug.Log("AttackState Tick");
+            //Debug.Log("AttackState Tick");
         }
 
         public void FixedTick()
@@ -41,6 +40,10 @@ namespace Unity_RPGProject.States.PlayerStates
             _playerController.PlayerAnimation.PlayerAttackAnimAsync();
             if (!_playerController.OnHitInfo) return;
             Attack();
+            if (_playerController.ProjectTile != null)
+            {
+                _playerController.ProjectileFire.FireTheTarget();
+            }
         }
 
         public void LateTick()

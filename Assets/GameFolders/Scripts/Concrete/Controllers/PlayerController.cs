@@ -31,11 +31,13 @@ namespace Unity_RPGProject.Controllers
 
         bool _onHit = false;
 
+
         NavMeshAgent _navMeshAgent;
         StateMachine _stateMachine;
         TargetDetector _targetDetector;
         EquipmentController _equipmentController;
-        public ProjectileFire ProjectileFire;
+        Projectile _projectile;
+        ProjectileFire _projectleFire;
 
         IInputReader _input;
         IPlayerAnimation _playerAnimation;
@@ -48,6 +50,8 @@ namespace Unity_RPGProject.Controllers
         public override WeaponSO WeaponSO { get { return _weaponSO; } set { _weaponSO = value; } }
         public override StateMachine StateMachine { get { return _stateMachine; } set { _stateMachine = value; } }
         public TargetDetector TargetDetector => _targetDetector;
+        public Projectile ProjectTile => _projectile;
+        public ProjectileFire ProjectileFire => _projectleFire;
 
         public IPlayerAnimation PlayerAnimation => _playerAnimation;
         public IInputReader Input => _input;
@@ -78,13 +82,15 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _health = GetComponent<Health>();
 
-            ProjectileFire = new ProjectileFire(this);
+
             _equipmentController = new EquipmentController(this);
             _input = new InputReader(this);
             _playerAnimation = new PlayerAnimation(this);
             _stateMachine = new StateMachine();
             _mover = new Mover(this);
             _targetDetector = new TargetDetector(this);
+
+          
 
         }
 
@@ -108,8 +114,13 @@ namespace Unity_RPGProject.Controllers
 
             _stateMachine.SetState(idleState);
 
-
             _equipmentController.UseEquipment();
+
+            if (WeaponSO.WeaponType == Enums.WeaponType.BOW)
+            {
+                _projectile = LeftHand.GetComponentInChildren<Projectile>();
+                _projectleFire = new ProjectileFire(this);
+            }
         }
 
         private void Update()

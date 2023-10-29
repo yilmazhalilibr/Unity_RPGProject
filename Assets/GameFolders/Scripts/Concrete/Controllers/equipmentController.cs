@@ -12,6 +12,10 @@ namespace Unity_RPGProject.Concrete.Controllers
         WeaponSO _baseSO;
 
         bool _range = false;
+        GameObject _weaponPrefab;
+        public bool RangeWeapon => _range;
+        public GameObject WeaponPrefab => _weaponPrefab;
+
         public EquipmentController(PlayerController controller)
         {
             _controller = controller;
@@ -23,12 +27,12 @@ namespace Unity_RPGProject.Concrete.Controllers
             if (_baseSO.WeaponType == Enums.WeaponType.BOW)
             {
                 //We are using only a Instantiate , so Instantie is not expensive this time.
-                var range = GameObject.Instantiate(_baseSO.WeaponPrefab, _controller.LeftHand.transform);
+                _weaponPrefab = GameObject.Instantiate(_baseSO.WeaponPrefab, _controller.LeftHand.transform);
                 _range = true;
             }
             else
             {
-                var melees = GameObject.Instantiate(_baseSO.WeaponPrefab, _controller.RightHand.transform);
+                _weaponPrefab = GameObject.Instantiate(_baseSO.WeaponPrefab, _controller.RightHand.transform);
                 _range = false;
             }
         }
