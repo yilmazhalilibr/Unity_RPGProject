@@ -12,7 +12,9 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
         PlayerController _playerController;
         Projectile _projectile;
 
-        float _lerpSpeed = 2f;
+        public float LerpSpeed { get { return _lerpSpeed; } set { _lerpSpeed = value; } }
+
+        float _lerpSpeed = 20f;
         public ProjectileFire(PlayerController playerController)
         {
             _playerController = playerController;
@@ -27,14 +29,15 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
 
             while (projectile != null)
             {
-                projectile.SetActive(true);
                 projectile.transform.LookAt(_playerController.TargetDetector.CurrentTargetTransform);
-                projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position, Time.deltaTime * _lerpSpeed);
-
-                await Task.Delay(1);
+                Vector3 targetPos = _playerController.TargetDetector.CurrentTargetTransform.position;
+                projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, new Vector3(targetPos.x, targetPos.y + 1f, targetPos.z), Time.deltaTime * _lerpSpeed);
+                
+                await UniTask.Delay(1);
+                
                 if (Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) < 0.01f)
                 {
-                    Debug.Log(Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) + " <= Distance");
+                    // Debug.Log(Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) + " <= Distance");
                     _projectile.ArrowCompleted(projectile);
                     break;
                 }

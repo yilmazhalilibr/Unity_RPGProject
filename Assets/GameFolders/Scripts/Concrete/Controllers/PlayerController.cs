@@ -27,6 +27,7 @@ namespace Unity_RPGProject.Controllers
         [Header("Hands")]
         [SerializeField] GameObject _leftHand;
         [SerializeField] GameObject _rightHand;
+        [SerializeField] float _projectileLerpSpeed = 20f;
 
 
         bool _onHit = false;
@@ -90,7 +91,7 @@ namespace Unity_RPGProject.Controllers
             _mover = new Mover(this);
             _targetDetector = new TargetDetector(this);
 
-          
+
 
         }
 
@@ -98,6 +99,7 @@ namespace Unity_RPGProject.Controllers
         {
             _navMeshAgent.speed = _speed;
             _playerAnimation.PlayerAnimator.runtimeAnimatorController = WeaponSO.AnimatorOverride;
+
 
             IdleState idleState = new(this);
             MoveState moveState = new(this);
@@ -120,6 +122,7 @@ namespace Unity_RPGProject.Controllers
             {
                 _projectile = LeftHand.GetComponentInChildren<Projectile>();
                 _projectleFire = new ProjectileFire(this);
+                ProjectileFire.LerpSpeed = _projectileLerpSpeed;
             }
         }
 

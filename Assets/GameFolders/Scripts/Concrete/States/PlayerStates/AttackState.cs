@@ -31,6 +31,7 @@ namespace Unity_RPGProject.States.PlayerStates
         public void Tick()
         {
             //Debug.Log("AttackState Tick");
+           
         }
 
         public void FixedTick()
@@ -38,10 +39,7 @@ namespace Unity_RPGProject.States.PlayerStates
             _playerController.PlayerAnimation.PlayerAttackAnimAsync();
             if (!_playerController.OnHitInfo) return;
             Attack();
-            if (_playerController.ProjectTile != null)
-            {
-                _ = _playerController.ProjectileFire.FireTheTarget();
-            }
+           
         }
 
         public void LateTick()
@@ -51,6 +49,10 @@ namespace Unity_RPGProject.States.PlayerStates
 
         public async void Attack()
         {
+            if (_playerController.ProjectTile != null)
+            {
+                _ = _playerController.ProjectileFire.FireTheTarget();
+            }
             _playerController.TargetDetector.CurrentTargetTransform.GetComponent<IHealth>().TakeDamage(Weapon.WeaponDamage);
             _playerController.OnHitInfo = false;
             await Task.Delay(700);
