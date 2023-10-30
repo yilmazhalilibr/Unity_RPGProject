@@ -29,16 +29,14 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
 
             while (projectile != null)
             {
-                projectile.transform.LookAt(_playerController.TargetDetector.CurrentTargetTransform);
                 Vector3 targetPos = _playerController.TargetDetector.CurrentTargetTransform.position;
-                projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, new Vector3(targetPos.x, targetPos.y + 1f, targetPos.z), Time.deltaTime * _lerpSpeed);
-                
+                projectile.transform.position = Vector3.Slerp(projectile.transform.position, new Vector3(targetPos.x, targetPos.y + 1f, targetPos.z), Time.deltaTime * _lerpSpeed);
+                projectile.transform.LookAt(_playerController.TargetDetector.CurrentTargetTransform);
+
                 await UniTask.Delay(1);
-                
-                if (Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) < 0.01f)
+                if (Vector3.Distance(projectile.transform.position, targetPos) <= 1f)
                 {
-                    // Debug.Log(Mathf.Abs(Vector3.Distance(projectile.transform.position, _playerController.TargetDetector.CurrentTargetTransform.position)) + " <= Distance");
-                    _projectile.ArrowCompleted(projectile);
+                    _projectile.SetArrowObject(projectile);
                     break;
                 }
             }

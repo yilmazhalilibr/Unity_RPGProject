@@ -31,10 +31,12 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
             return arrow;
         }
 
-        public void ArrowCompleted(GameObject arrow)
+        public void SetArrowObject(GameObject arrow)
         {
             arrow.SetActive(false);
             arrow.transform.position = _fireTransform.position;
+            _arrows.Enqueue(arrow);
+
         }
 
 
