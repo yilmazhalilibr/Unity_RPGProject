@@ -142,6 +142,7 @@ namespace Unity_RPGProject.Controllers
         public void OnHit()
         {
             _onHit = true;
+
         }
 
         [System.Obsolete]

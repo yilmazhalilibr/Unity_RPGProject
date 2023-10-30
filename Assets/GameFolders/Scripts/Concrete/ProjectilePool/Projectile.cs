@@ -16,7 +16,7 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
         {
             for (int i = 0; i < _arrowCount; i++)
             {
-                var arrow = Instantiate(_arrowPrefab, gameObject.transform);
+                GameObject arrow = Instantiate(_arrowPrefab, gameObject.transform);
                 arrow.SetActive(false);
                 arrow.transform.position = _fireTransform.position;
                 _arrows.Enqueue(arrow);
@@ -25,6 +25,7 @@ namespace Unity_RPGProject.Concrete.ProjectilePool
         public GameObject GetArrowObject()
         {
             GameObject arrow = _arrows.Dequeue();
+            arrow.transform.position = _fireTransform.position;
             arrow.SetActive(true);
             _arrows.Enqueue(arrow);
             return arrow;

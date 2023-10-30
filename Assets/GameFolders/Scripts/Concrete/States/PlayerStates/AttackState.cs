@@ -5,8 +5,6 @@ using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.States;
 using Unity_RPGProject.Controllers;
 using Unity_RPGProject.ScriptableObjects;
-using UnityEngine;
-using UnityEngine.AI;
 
 namespace Unity_RPGProject.States.PlayerStates
 {
@@ -42,7 +40,7 @@ namespace Unity_RPGProject.States.PlayerStates
             Attack();
             if (_playerController.ProjectTile != null)
             {
-                _playerController.ProjectileFire.FireTheTarget();
+                _ = _playerController.ProjectileFire.FireTheTarget();
             }
         }
 
