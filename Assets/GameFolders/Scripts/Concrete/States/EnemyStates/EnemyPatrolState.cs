@@ -34,11 +34,13 @@ namespace Unity_RPGProject.States.EnemyStates
         {
             _enemyController.NavMeshAgent.speed = 2f;
             _enemyController.NavMeshAgent.stoppingDistance = 0f;
+            _enemyController.EnemyHealth.OnTakeHit += ChaseTrigger;
 
         }
 
         public void OnExit()
         {
+            _enemyController.EnemyHealth.OnTakeHit -= ChaseTrigger;
         }
 
         public void Tick()
@@ -60,7 +62,10 @@ namespace Unity_RPGProject.States.EnemyStates
             }
 
         }
-
+        public void ChaseTrigger(float currentHealth, float maxHealth)
+        {
+            _enemyController.CanChase = true;
+        }
 
 
 

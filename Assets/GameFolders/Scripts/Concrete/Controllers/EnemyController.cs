@@ -36,7 +36,6 @@ namespace Unity_RPGProject.Controllers
         Transform _player;
 
         IHealth _health;
-
         IHealth _playerHealth;
         IMover _mover;
         IEnemyAnimation _enemyAnimation;
@@ -56,7 +55,7 @@ namespace Unity_RPGProject.Controllers
 
         public IEnemyAnimation EnemyAnimation => _enemyAnimation;
         public IHealth PlayerHealth => _playerHealth;
-
+        public IHealth EnemyHealth => _health;
 
         public float ChaseDistance => _chaseDistance;
         public float ChaseTime => _chaseTime;
@@ -86,7 +85,7 @@ namespace Unity_RPGProject.Controllers
             }
         }
 
-        
+
 
         private void Awake()
         {

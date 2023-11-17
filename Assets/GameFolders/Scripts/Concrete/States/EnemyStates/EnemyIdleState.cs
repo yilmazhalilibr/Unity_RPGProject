@@ -38,16 +38,22 @@ namespace Unity_RPGProject.States.EnemyStates
         public void OnEnter()
         {
             _idleTime = Random.Range(0, 3f);
+            _enemyController.EnemyHealth.OnTakeHit += ChaseTrigger;
         }
 
         public void OnExit()
         {
+            _enemyController.EnemyHealth.OnTakeHit -= ChaseTrigger;
         }
 
         public void Tick()
         {
         }
 
+        public void ChaseTrigger(float currentHealth, float maxHealth)
+        {
+            _enemyController.CanChase = true;
+        }
 
     }
 }

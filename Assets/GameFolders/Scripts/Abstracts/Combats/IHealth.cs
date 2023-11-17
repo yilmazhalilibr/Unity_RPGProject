@@ -11,6 +11,7 @@ namespace Unity_RPGProject.Abstracts.Combats
         void TakeDamage(float damage);
 
         event System.Action OnDead;
+        event System.Action<float, float> OnTakeHit;
 
     }
 }
