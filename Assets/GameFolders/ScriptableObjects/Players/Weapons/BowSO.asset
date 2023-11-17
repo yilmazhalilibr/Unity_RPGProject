@@ -16,4 +16,4 @@ MonoBehaviour:
   _weaponType: 2
   _animatorOverride: {fileID: 22100000, guid: 08691f9e3461c6b46ac1d289dddd26ac, type: 2}
   _weaponDamage: 15
-  _weaponRange: 25
+  _weaponRange: 15
