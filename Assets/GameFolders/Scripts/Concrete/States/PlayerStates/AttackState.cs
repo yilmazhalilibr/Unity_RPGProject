@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Unity_RPGProject.Abstracts.Combats;
 using Unity_RPGProject.Abstracts.States;
@@ -31,7 +32,7 @@ namespace Unity_RPGProject.States.PlayerStates
         public void Tick()
         {
             //Debug.Log("AttackState Tick");
-           
+
         }
 
         public void FixedTick()
@@ -39,12 +40,13 @@ namespace Unity_RPGProject.States.PlayerStates
             _playerController.PlayerAnimation.PlayerAttackAnimAsync();
             if (!_playerController.OnHitInfo) return;
             Attack();
-           
+
         }
 
         public void LateTick()
         {
             _playerController.transform.LookAtSmooth(_playerController.TargetDetector.CurrentTargetTransform, 2f);
+
         }
 
         public async void Attack()

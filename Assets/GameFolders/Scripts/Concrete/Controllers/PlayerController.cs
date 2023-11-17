@@ -100,7 +100,6 @@ namespace Unity_RPGProject.Controllers
             _navMeshAgent.speed = _speed;
             _playerAnimation.PlayerAnimator.runtimeAnimatorController = WeaponSO.AnimatorOverride;
 
-
             IdleState idleState = new(this);
             MoveState moveState = new(this);
             AttackState attackState = new(this);
